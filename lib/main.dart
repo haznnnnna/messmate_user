@@ -7,6 +7,7 @@ import 'package:messmate_user/signup_login/splashscreen_5.dart';
 import 'package:messmate_user/splashcreen.dart';
 
 import 'firebase_options.dart';
+import 'otpscreen.dart';
 var height;
 var width;
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splashscreen5(),
+      home: OtpScreen(),
     );
   }
 }

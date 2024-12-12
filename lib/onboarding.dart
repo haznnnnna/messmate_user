@@ -99,7 +99,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       showBackButton: false,
       skip: const Text('Skip',
           style: TextStyle(
-              fontWeight: FontWeight.w600, color: ColorConstant.primaryColor)),
+              fontWeight: FontWeight.w600, color: ColorConstant.blackColor)),
       next: const Text('Next',
           style: TextStyle(
               fontWeight: FontWeight.w600, color: ColorConstant.primaryColor)),
