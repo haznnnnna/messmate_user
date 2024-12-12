@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:messmate_user/signup_login/login_page.dart';
 
 import 'constants/colorconstant.dart';
 import 'constants/imageconstant.dart';
-import 'loginpage.dart';
 import 'main.dart';
 
 class OnBoardingPage extends StatefulWidget {
