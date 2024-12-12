@@ -1,6 +1,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:messmate_user/profilepage.dart';
 import 'package:messmate_user/signup_login/goal.dart';
 import 'package:messmate_user/signup_login/login_page.dart';
 import 'package:messmate_user/signup_login/splashscreen_5.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OtpScreen(),
+      home: ProfilePage(),
     );
   }
 }
