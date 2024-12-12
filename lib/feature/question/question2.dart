@@ -7,14 +7,14 @@ import '../../core/constants/imageconstant.dart';
 import '../../core/localvariables.dart';
 
 
-class Q2 extends StatefulWidget {
-  const Q2({super.key});
+class Question2 extends StatefulWidget {
+  const Question2({super.key});
 
   @override
-  State<Q2> createState() => _Q2State();
+  State<Question2> createState() => _Question2State();
 }
 
-class _Q2State extends State<Q2> {
+class _Question2State extends State<Question2> {
   bool change=true;
   @override
   Widget build(BuildContext context) {
@@ -125,9 +125,14 @@ class _Q2State extends State<Q2> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Icon(Icons.arrow_back_ios_sharp,color: ColorConstant.primaryColor,),
-                  Text('Back',style: GoogleFonts.montserrat(fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: ColorConstant.primaryColor),),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Back',style: GoogleFonts.montserrat(fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: ColorConstant.primaryColor),),
+                  ),
                   Container(
                     height: height*0.052,
                     width: width*0.3,

@@ -5,6 +5,8 @@ class ImageConstant {
   static const onboarding3="assets/images/landing3.png";
   static const onboarding4="assets/images/landing4.png";
   static const profile="assets/images/profile.png";
+  static const carouselImage="assets/images/carouselImage.png";
+  static const meal1="assets/images/meal1.png";
 }
 
 
@@ -18,6 +20,9 @@ class SvgConstants {
   static const q2Chicken="assets/svg/q2Chicken.svg";
   static const veg="assets/svg/veg.svg";
   static const nonVeg="assets/svg/nonVeg.svg";
-  static const dinner="assets/svg/dinner.svg";
-  static const lunch="assets/svg/lunch.svg";
+  static const dinner="assets/svg/lunch.svg";
+  static const lunch="assets/svg/dinner.svg";
+  static const notification="assets/svg/notification.svg";
+  static const activePlan="assets/svg/activeplan.svg";
+
 }
