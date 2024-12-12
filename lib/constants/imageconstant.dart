@@ -1,18 +1,23 @@
 class ImageConstant {
-  static const logo="assets/images/mess mate-01 1.png";
-  static const onboarding1="assets/images/Group 1.png";
-  static const onboarding2="assets/images/Group 2.png";
-  static const onboarding3="assets/images/Group 8.png";
-  static const onboarding4="assets/images/Group 9.png";
-  static const profile="assets/images/Ellipse 44.png";
+  static const logo="assets/images/messLogo.png";
+  static const onboarding1="assets/images/landing1.png";
+  static const onboarding2="assets/images/landing2.png";
+  static const onboarding3="assets/images/landing3.png";
+  static const onboarding4="assets/images/landing4.png";
+  static const profile="assets/images/profile.png";
 }
 
 
 class SvgConstants {
-  static const doctor="assets/svg/Vector (3).svg";
-  static const nutri="assets/svg/Group 654.svg";
-  static const calo="assets/svg/Vector (4).svg";
-  static const camera="assets/svg/Vector.svg";
-  static const editProfile="assets/svg/Vector (2).svg";
-
+  static const doctor="assets/svg/doctor.svg";
+  static const nutri="assets/svg/nutrition.svg";
+  static const calo="assets/svg/calori.svg";
+  static const camera="assets/svg/camera.svg";
+  static const editProfile="assets/svg/person.svg";
+  static const q1Chicken="assets/svg/q1Chicken.svg";
+  static const q2Chicken="assets/svg/q2Chicken.svg";
+  static const veg="assets/svg/veg.svg";
+  static const nonVeg="assets/svg/nonVeg.svg";
+  static const dinner="assets/svg/dinner.svg";
+  static const lunch="assets/svg/lunch.svg";
 }
