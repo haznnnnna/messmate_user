@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:messmate_user/constants/colorconstant.dart';
+
 import 'package:pinput/pinput.dart';
 
-import 'main.dart';
+import '../../core/constants/colorconstant.dart';
+import '../../core/localvariables.dart';
+
+
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});

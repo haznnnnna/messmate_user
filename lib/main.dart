@@ -1,14 +1,10 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:messmate_user/profilepage.dart';
-import 'package:messmate_user/signup_login/goal.dart';
-import 'package:messmate_user/signup_login/login_page.dart';
-import 'package:messmate_user/signup_login/loginsignup.dart';
-import 'package:messmate_user/splashcreen.dart';
 
+import 'core/localvariables.dart';
+import 'feature/splashscreen/splashcreen.dart';
 import 'firebase_options.dart';
-import 'otpscreen.dart';
 
 
 Future<void> main() async {

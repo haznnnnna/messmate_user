@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:messmate_user/constants/colorconstant.dart';
-import 'package:messmate_user/constants/imageconstant.dart';
+
 import 'package:messmate_user/main.dart';
+
+import '../../core/constants/colorconstant.dart';
+import '../../core/constants/imageconstant.dart';
+import '../../core/localvariables.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

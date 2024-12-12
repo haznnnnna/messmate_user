@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:messmate_user/constants/imageconstant.dart';
 
+
+import '../../core/constants/imageconstant.dart';
 import 'onboarding.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 // import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:messmate_user/constants/colorconstant.dart';
-import 'package:messmate_user/constants/imageconstant.dart';
 
-import '../main.dart';
+import '../../core/constants/colorconstant.dart';
+import '../../core/constants/imageconstant.dart';
+import '../../core/localvariables.dart';
+
 
 class Goal extends StatefulWidget {
   const Goal({super.key});

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:messmate_user/constants/colorconstant.dart';
-import 'package:messmate_user/constants/imageconstant.dart';
 
-import '../main.dart';
+import '../../core/constants/colorconstant.dart';
+import '../../core/constants/imageconstant.dart';
+import '../../core/localvariables.dart';
+
 
 class Q2 extends StatefulWidget {
   const Q2({super.key});
