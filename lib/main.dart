@@ -9,8 +9,7 @@ import 'package:messmate_user/splashcreen.dart';
 
 import 'firebase_options.dart';
 import 'otpscreen.dart';
-var height;
-var width;
+
 
 Future<void> main() async {
  WidgetsFlutterBinding.ensureInitialized();
