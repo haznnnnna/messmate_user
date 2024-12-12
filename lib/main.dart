@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfilePage(),
+      home: Q1(),
     );
   }
 }
