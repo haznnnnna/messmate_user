@@ -1,17 +1,20 @@
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:messmate_user/signup_login/goal.dart';
 import 'package:messmate_user/signup_login/login_page.dart';
+import 'package:messmate_user/signup_login/splashscreen_5.dart';
 import 'package:messmate_user/splashcreen.dart';
 
 import 'firebase_options.dart';
 var height;
 var width;
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
-}
 
+Future<void> main() async {
+ WidgetsFlutterBinding.ensureInitialized();
+ await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+ runApp(MyApp());
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: Splashscreen5(),
     );
   }
 }
