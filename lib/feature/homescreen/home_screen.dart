@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
    List items = [
     {
-      'title': '30',
+      'title': '7',
       'caption':'Days Plan',
       'subtitle': '\u{20B9}${1599.00}/ Only\n\u{20B9}${35}/meal',
       'image': 'assets/images/plans1.png',
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // 'backgroundColor': Colors.green.shade100,
     },
     {
-      'title': '30',
+      'title': '14',
       'caption':'Days Plan',
       'subtitle': '\u{20B9}${1599.00}/ Only\n\u{20B9}${35}/meal',
       'image': 'assets/images/plans3.png',
@@ -115,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Color((0xff444444))
                                   .withOpacity(0.23),
                               // spreadRadius: 1,
-                              blurRadius: 5,
+                              blurRadius: 4,
                               offset: Offset(4, 4))
                         ]
                     ),
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     dotWidth: width*0.02
                 ),
               ),
-              SizedBox(height: height*0.02,),
+              SizedBox(height: height*0.01,),
               Padding(
                 padding: EdgeInsets.only(
                   left: width*0.05
@@ -185,12 +185,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           top: -6,
                           left: 16,
                           child: Container(
-                            height: 120,
-                            width: 120,
+                            height: height*0.155,
+                            width: width*0.33,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage(meals[index]['image']),
+                                image: AssetImage(meals[index]['image'],),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -200,9 +200,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Positioned(
                           bottom: 33,
                           child: Text(meals[index]['title'],
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
+                            style: GoogleFonts.montserrat(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -251,21 +251,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   viewportFraction: 0.5,
                   aspectRatio: 16 / 9,
-                  height: height*0.27,
+                  height: height*0.3,
+                  // autoPlay: true,
                   enlargeCenterPage: true,
                   onPageChanged: (index, reason) {
                     setState(() {
-                      selectIndex=index;
+                      selectPlans=index;
                     });
                   },
                 ) ,
                 itemBuilder: (BuildContext context, int index, int realIndex) {
+                  final item = items[index];
+                  final isActive = index == selectPlans;
                   return Container(
                     height: height*0.3,
                     width: width*0.45,
                     margin: EdgeInsets.all(width*0.01),
                     decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: isActive
+                            ? ColorConstant.primaryColor
+                            : ColorConstant.whiteColor,
                         borderRadius: BorderRadius.circular(width*0.02),
                         boxShadow: [
                           BoxShadow(
@@ -281,20 +286,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(items[index]['title'], style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.w700,
-                              fontSize: 17,
-                              color:ColorConstant.whiteColor
+                              fontSize:isActive? 20:17,
+                            color: isActive
+                                ? ColorConstant.whiteColor
+                                : ColorConstant.primaryColor,
                           )),
                           Text(items[index]['caption'], style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color:ColorConstant.whiteColor
+                            fontSize:isActive? 15:13,
+                            color: isActive
+                                ? ColorConstant.whiteColor
+                                : ColorConstant.primaryColor,
                           )),
-                          Image(image: AssetImage(items[index]['image']),height: height*0.1,),
+                          Image(image: AssetImage(items[index]['image']),
+                            height:isActive? height*0.15:height*0.1,),
                           Text(items[index]['subtitle'],
                               textAlign: TextAlign.center, style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.w700,
                               fontSize: 13,
-                              color:ColorConstant.whiteColor
+                                color: isActive
+                                    ? ColorConstant.whiteColor
+                                    : ColorConstant.primaryColor,
                           )),
                           // Text('\u{20B9}${35}/meal', style: GoogleFonts.montserrat(
                           //     fontWeight: FontWeight.w600,

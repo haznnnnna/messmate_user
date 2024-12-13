@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'core/localvariables.dart';
+import 'feature/homescreen/home_screen.dart';
 import 'feature/splashscreen/splashcreen.dart';
 import 'firebase_options.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: HomeScreen(),
     );
   }
 }
