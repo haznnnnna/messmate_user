@@ -7,6 +7,7 @@ class ImageConstant {
   static const profile="assets/images/profile.png";
   static const carouselImage="assets/images/carouselImage.png";
   static const meal1="assets/images/meal1.png";
+  static const plans1="assets/images/plans1.png";
 }
 
 
