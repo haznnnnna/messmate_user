@@ -24,5 +24,6 @@ class SvgConstants {
   static const lunch="assets/svg/dinner.svg";
   static const notification="assets/svg/notification.svg";
   static const activePlan="assets/svg/activeplan.svg";
+  static const leftArrow="assets/svg/leftArrow.svg";
 
 }
