@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:messmate_user/main.dart';
 
@@ -28,8 +29,9 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       body: Padding(
-        padding:  EdgeInsets.all(width*0.05),
+        padding: EdgeInsets.all(width * 0.05),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               height: height * 0.3,
@@ -75,10 +77,20 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             Text(
                               "Alexa",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: GoogleFonts.montserrat(
+                                  fontSize: width * 0.05,
+                                  fontWeight: FontWeight.w700),
                             ),
-                            Text("+93-53696246"),
-                            Text("village, Bangalore"),
+                            Text(
+                              "+93-53696246",
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xff8A8585)),
+                            ),
+                            Text("village, Bangalore",
+                                style: GoogleFonts.montserrat(
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xff8A8585))),
                           ],
                         )
                       ],
@@ -86,25 +98,307 @@ class _ProfilePageState extends State<ProfilePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("83 kg\nheight"),
+                        Column(
+                          children: [
+                            Text(
+                              "83 kg",
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              "Height",
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff444444)),
+                            ),
+                          ],
+                        ),
                         SizedBox(
-                            height: 50,
-                            child: VerticalDivider(
+                          height: height * 0.07,
+                          child: Container(
+                            width: width * 0.002,
+                            decoration: BoxDecoration(
                               color: ColorConstant.primaryColor,
-                            )),
-                        Text("170 m\nWeight"),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 0),
+                                  blurRadius: 3,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "170 m",
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              "Weight",
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff444444)),
+                            ),
+                          ],
+                        ),
                         SizedBox(
-                            height: 50,
-                            child: VerticalDivider(
+                          height: height * 0.07,
+                          child: Container(
+                            width: width * 0.002,
+                            decoration: BoxDecoration(
                               color: ColorConstant.primaryColor,
-                            )),
-                        Text("24 \n BMI"),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 0),
+                                  blurRadius: 3,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "24",
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              "BMI",
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff444444)),
+                            ),
+                          ],
+                        ),
                       ],
                     )
                   ],
                 ),
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      SvgConstants.activePlaneGreen,
+                    ),
+                    SizedBox(
+                      width: width * 0.04,
+                    ),
+                    Text(
+                      "Active plan",
+                      style: GoogleFonts.montserrat(
+                          fontSize: width * 0.045,
+                          fontWeight: FontWeight.w600,
+                          color: ColorConstant.primaryColor),
+                    ),
+                  ],
+                ),
+                SvgPicture.asset(
+                  SvgConstants.openGreen,
+                  height: height * 0.03,
+                  width: width * 0.03,
+                ),
+              ],
+            ),
+            Divider(
+              thickness: width * 0.001,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      SvgConstants.recent,
+                    ),
+                    SizedBox(
+                      width: width * 0.04,
+                    ),
+                    Text(
+                      "Recent consultations",
+                      style: GoogleFonts.montserrat(
+                          fontSize: width * 0.045,
+                          fontWeight: FontWeight.w600,
+                          color: ColorConstant.primaryColor),
+                    ),
+                  ],
+                ),
+                SvgPicture.asset(
+                  SvgConstants.openGreen,
+                  height: height * 0.03,
+                  width: width * 0.03,
+                ),
+              ],
+            ),
+            Divider(
+              thickness: width * 0.001,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      SvgConstants.reports,
+                    ),
+                    SizedBox(
+                      width: width * 0.04,
+                    ),
+                    Text(
+                      "Reports",
+                      style: GoogleFonts.montserrat(
+                          fontSize: width * 0.045,
+                          fontWeight: FontWeight.w600,
+                          color: ColorConstant.primaryColor),
+                    ),
+                  ],
+                ),
+                SvgPicture.asset(
+                  SvgConstants.openGreen,
+                  height: height * 0.03,
+                  width: width * 0.03,
+                ),
+              ],
+            ),
+            Divider(
+              thickness: width * 0.001,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      SvgConstants.address,
+                    ),
+                    SizedBox(
+                      width: width * 0.04,
+                    ),
+                    Text(
+                      "Saved address",
+                      style: GoogleFonts.montserrat(
+                          fontSize: width * 0.045,
+                          fontWeight: FontWeight.w600,
+                          color: ColorConstant.primaryColor),
+                    ),
+                  ],
+                ),
+                SvgPicture.asset(
+                  SvgConstants.openGreen,
+                  height: height * 0.03,
+                  width: width * 0.03,
+                ),
+              ],
+            ),
+            Divider(
+              thickness: width * 0.002,
+              color: ColorConstant.primaryColor,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      SvgConstants.contactUs,
+                    ),
+                    SizedBox(
+                      width: width * 0.04,
+                    ),
+                    Text(
+                      "Contact us",
+                      style: GoogleFonts.montserrat(
+                          fontSize: width * 0.045, fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+                SvgPicture.asset(
+                  SvgConstants.openBlack,
+                  height: height * 0.03,
+                  width: width * 0.03,
+                ),
+              ],
+            ),
+            Divider(
+              thickness: width * 0.001,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      SvgConstants.faq,
+                    ),
+                    SizedBox(
+                      width: width * 0.04,
+                    ),
+                    Text(
+                      "FAQ",
+                      style: GoogleFonts.montserrat(
+                          fontSize: width * 0.045, fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+                SvgPicture.asset(
+                  SvgConstants.openBlack,
+                  height: height * 0.03,
+                  width: width * 0.03,
+                ),
+              ],
+            ),
+            Divider(
+              thickness: width * 0.001,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      SvgConstants.rating,
+                    ),
+                    SizedBox(
+                      width: width * 0.04,
+                    ),
+                    Text(
+                      "Rating",
+                      style: GoogleFonts.montserrat(
+                          fontSize: width * 0.045, fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+                SvgPicture.asset(
+                  SvgConstants.openBlack,
+                  height: height * 0.03,
+                  width: width * 0.03,
+                ),
+              ],
+            ),
+            Divider(
+              thickness: width * 0.001,
+            ),
+            Row(
+              children: [
+                SvgPicture.asset(SvgConstants.logOut),
+                SizedBox(width: width*0.03,),
+                Text(
+                  "Logout",
+                  style: GoogleFonts.montserrat(
+                    fontSize: width*0.04,
+                      fontWeight: FontWeight.w700,
+                      color: ColorConstant.primaryColor),
+                )
+              ],
+            )
           ],
         ),
       ),

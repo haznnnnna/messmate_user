@@ -6,8 +6,6 @@ import 'package:pinput/pinput.dart';
 import '../../core/constants/colorconstant.dart';
 import '../../core/localvariables.dart';
 
-
-
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
 
@@ -34,12 +32,16 @@ class _OtpScreenState extends State<OtpScreen> {
                   children: [
                     Text(
                       "Welcome\nBack!",
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
+                          fontSize: width * 0.1,
                           color: ColorConstant.primaryColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: width * 0.1),
+                          fontWeight: FontWeight.w600),
                     ),
-                    const Text("Enter your OTP number send to ******86"),
+                    Text(
+                      "Enter your OTP number send to ******86",
+                      style: GoogleFonts.montserrat(
+                          color: ColorConstant.blackColor),
+                    ),
                   ],
                 ),
               ),
@@ -71,7 +73,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 ],
               ),
             ),
-             SizedBox(
+            SizedBox(
               child: Column(
                 children: [
                   const Text(
@@ -83,7 +85,9 @@ class _OtpScreenState extends State<OtpScreen> {
                       color: ColorConstant.primaryColor,
                     ),
                   ),
-                  SizedBox(height: height*0.02,),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
                   const Text("Re enter number"),
                 ],
               ),

@@ -25,5 +25,14 @@ class SvgConstants {
   static const notification="assets/svg/notification.svg";
   static const activePlan="assets/svg/activeplan.svg";
   static const leftArrow="assets/svg/leftArrow.svg";
-
+  static const address="assets/svg/address.svg";
+  static const recent="assets/svg/recent.svg";
+  static const reports="assets/svg/reports.svg";
+  static const openGreen="assets/svg/openGreen.svg";
+  static const openBlack="assets/svg/openBlack.svg";
+  static const activePlaneGreen="assets/svg/activePlaneGreen.svg";
+  static const contactUs="assets/svg/contactUs.svg";
+  static const rating="assets/svg/rating.svg";
+  static const faq="assets/svg/FAQ.svg";
+  static const logOut="assets/svg/logOut.svg";
 }
