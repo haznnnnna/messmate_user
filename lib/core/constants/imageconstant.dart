@@ -8,6 +8,8 @@ class ImageConstant {
   static const carouselImage="assets/images/carouselImage.png";
   static const meal1="assets/images/meal1.png";
   static const plans1="assets/images/plans1.png";
+  static const saladPlate="assets/images/saladPlate.png";
+  static const americanPasta="assets/images/americanPasta.png";
 }
 
 
