@@ -16,7 +16,7 @@ class BottomNaviPage extends StatefulWidget {
 
 class _BottomNaviPageState extends State<BottomNaviPage> {
   int selectedIndex = 0;
-  List pages=[
+  List pages = [
     const HomeScreen(),
     const ExplorePage(),
     Container(),
@@ -31,22 +31,19 @@ class _BottomNaviPageState extends State<BottomNaviPage> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(width * 0.1),
-              color: ColorConstant.whiteColor,
-              // boxShadow: [
-              //   BoxShadow(
-              //     blurRadius: 5,
-              //     color: ColorConstant.primaryColor.withOpacity(0.5),
-              //   )
-              // ],
-              gradient: LinearGradient(
+            borderRadius: BorderRadius.circular(width * 0.1),
+            color: ColorConstant.whiteColor,
+            // boxShadow: [
+            //   BoxShadow(
+            //     blurRadius: 5,
+            //     color: ColorConstant.primaryColor.withOpacity(0.5),
+            //   )
+            // ],
+            gradient: LinearGradient(
                 colors: [Colors.green.shade50, Colors.white],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                stops: [
-                  0.1,0.4
-                ]
-              ),
+                stops: [0.1, 0.4]),
           ),
           child: SafeArea(
             child: Padding(
@@ -62,8 +59,9 @@ class _BottomNaviPageState extends State<BottomNaviPage> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 duration: const Duration(milliseconds: 400),
                 tabBackgroundColor: Colors.green.shade50,
+                tabActiveBorder: Border.all(color: ColorConstant.primaryColor),
                 color: ColorConstant.primaryColor,
-                tabs:  [
+                tabs: const [
                   GButton(
                     icon: Icons.home_outlined,
                     text: 'Home',
