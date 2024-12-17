@@ -17,57 +17,24 @@ class ChoosePlans extends StatefulWidget {
 }
 
 class _ChoosePlansState extends State<ChoosePlans> {
-
   DateTime? selectedDate;
   DateTime today = DateTime.now();
   List<DateTime> currentWeekDates = [];
-  getDates(){
 
-    
-    
-  // Find the start of the week (Monday)
+  getDates() {
+    // Find the start of the week (Monday)
     DateTime startOfWeek = today.subtract(Duration(days: today.weekday - 1));
-  
 
     // Generate the list of dates for the current week with time set to 00:00:00
- currentWeekDates = List.generate(7, (index) {
+    currentWeekDates = List.generate(7, (index) {
       DateTime date = startOfWeek.add(Duration(days: index));
       return DateTime(date.year, date.month, date.day); // Set time to 00:00:00
     });
-  setState(() {
+    setState(() {});
 
-  });
+    print(currentWeekDates);
+  }
 
-
-  print(currentWeekDates);
-}
-
-  List<Map<String, String>> lunchItems = [
-    {
-      "title": "American pasta",
-      "description": "Lorem ipsum dolor sit amet consectetur.",
-      "calories": "1025Kcal",
-      "protein": "25g protein",
-      "carbo": "25 Carbo",
-      "fat": "5g Fat",
-    },
-    {
-      "title": "Sheet pan sweet pasta",
-      "description": "Lorem ipsum dolor sit amet consectetur.",
-      "calories": "1025Kcal",
-      "protein": "25g protein",
-      "carbo": "25 Carbo",
-      "fat": "5g Fat",
-    },
-    {
-      "title": "American pasta",
-      "description": "Lorem ipsum dolor sit amet consectetur.",
-      "calories": "1025Kcal",
-      "protein": "25g protein",
-      "carbo": "25 Carbo",
-      "fat": "5g Fat",
-    },
-  ];
   String selectedOption = "Lunch";
   bool tap = true;
 
@@ -79,6 +46,7 @@ class _ChoosePlansState extends State<ChoosePlans> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -164,7 +132,8 @@ class _ChoosePlansState extends State<ChoosePlans> {
                           Text(
                             "December",
                             style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                                fontWeight: FontWeight.bold,
+                                fontSize: width * 0.03),
                           )
                         ],
                       ),
@@ -177,7 +146,8 @@ class _ChoosePlansState extends State<ChoosePlans> {
                             children: List.generate(
                               currentWeekDates.length,
                               (index) {
-                                bool isSelected = selectedDate == currentWeekDates[index];
+                                bool isSelected =
+                                    selectedDate == currentWeekDates[index];
                                 return GestureDetector(
                                   onTap: () {
                                     setState(() {
@@ -196,8 +166,8 @@ class _ChoosePlansState extends State<ChoosePlans> {
                                         color: isSelected
                                             ? ColorConstant.primaryColor
                                             : ColorConstant.whiteColor,
-                                        borderRadius:
-                                            BorderRadius.circular(width * 0.06)),
+                                        borderRadius: BorderRadius.circular(
+                                            width * 0.06)),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -206,7 +176,8 @@ class _ChoosePlansState extends State<ChoosePlans> {
                                           padding:
                                               const EdgeInsets.only(top: 8.0),
                                           child: Text(
-                                            DateFormat.E().format(currentWeekDates[index]),
+                                            DateFormat.E().format(
+                                                currentWeekDates[index]),
                                             style: GoogleFonts.montserrat(
                                                 color: isSelected
                                                     ? ColorConstant.whiteColor
@@ -227,7 +198,8 @@ class _ChoosePlansState extends State<ChoosePlans> {
                                           ),
                                           child: Center(
                                               child: Text(
-                                                  DateFormat.d().format(currentWeekDates[index]),
+                                            DateFormat.d().format(
+                                                currentWeekDates[index]),
                                             style: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.bold,
                                                 color: isSelected
@@ -248,38 +220,43 @@ class _ChoosePlansState extends State<ChoosePlans> {
                 Container(
                   // color: Colors.pink,
                   height: height * 0.5,
-                  width: width ,
+                  width: width,
                   child: Column(
                     children: [
-                     const TabBar(
-                       // indicatorSize: TabBarIndicatorSize,
-                        dividerColor: ColorConstant.whiteColor,
-                        labelColor: ColorConstant.blackColor,
+                      const TabBar(
+                          // indicatorSize: TabBarIndicatorSize,
+                          dividerColor: Colors.transparent,
+                          labelColor: ColorConstant.blackColor,
                           unselectedLabelColor: Colors.grey,
                           indicatorColor: ColorConstant.blackColor,
                           tabs: [
-                        Tab(text: "Lunch",),
-                        Tab(text: "Dinner",)
-                      ]),
-                   selectedDate==null?
-                   Container():
-                   Expanded(
-                        child: TabBarView(children: [
-                          Container(
-                            height: height*0.12,
-                            width: width*0.9,
-                            child: ChoosePlanWidget(date: selectedDate!, meal: "Lunch"),
-                            color: ColorConstant.whiteColor,
-                          ),Container(
-                            height: height*0.12,
-                            width: width*0.9,
-                            color: ColorConstant.whiteColor,
-                            child: ChoosePlanWidget(date: selectedDate!, meal: "Dinner"),
-
-                          ),
-
-                        ]),
-                      )
+                            Tab(
+                              text: "Lunch",
+                            ),
+                            Tab(
+                              text: "Dinner",
+                            )
+                          ]),
+                      selectedDate == null
+                          ? Container()
+                          : Expanded(
+                              child: TabBarView(children: [
+                                Container(
+                                  height: height * 0.12,
+                                  width: width * 0.9,
+                                  child: ChoosePlanWidget(
+                                      date: selectedDate!, meal: "Lunch"),
+                                  color: ColorConstant.whiteColor,
+                                ),
+                                Container(
+                                  height: height * 0.12,
+                                  width: width * 0.9,
+                                  color: ColorConstant.whiteColor,
+                                  child: ChoosePlanWidget(
+                                      date: selectedDate!, meal: "Dinner"),
+                                ),
+                              ]),
+                            )
                     ],
                   ),
                 )
