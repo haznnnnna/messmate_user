@@ -20,19 +20,24 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstant.whiteColor,
-      appBar: AppBar(
-        backgroundColor: ColorConstant.whiteColor,
-        centerTitle: true,
-        title: const Text(
-          "Profile",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: ColorConstant.whiteColor,
+      //   centerTitle: true,
+      //   title: const Text(
+      //     "Profile",
+      //     style: TextStyle(fontWeight: FontWeight.bold),
+      //   ),
+      // ),
       body: Padding(
         padding: EdgeInsets.all(width * 0.05),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Text(
+              "Profile",
+              style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w800, fontSize: width * 0.06),
+            ),
             Container(
               height: height * 0.3,
               width: width,
@@ -180,6 +185,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
+            ),
+            SizedBox(
+              height: height * 0.01,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -389,11 +397,13 @@ class _ProfilePageState extends State<ProfilePage> {
             Row(
               children: [
                 SvgPicture.asset(SvgConstants.logOut),
-                SizedBox(width: width*0.03,),
+                SizedBox(
+                  width: width * 0.03,
+                ),
                 Text(
                   "Logout",
                   style: GoogleFonts.montserrat(
-                    fontSize: width*0.04,
+                      fontSize: width * 0.04,
                       fontWeight: FontWeight.w700,
                       color: ColorConstant.primaryColor),
                 )
