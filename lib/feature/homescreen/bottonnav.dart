@@ -4,7 +4,6 @@ import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/feature/homescreen/explore.dart';
 import 'package:messmate_user/feature/homescreen/home_screen.dart';
 import 'package:messmate_user/feature/profile/profilepage.dart';
-
 import '../../core/localvariables.dart';
 
 class BottomNaviPage extends StatefulWidget {
@@ -40,10 +39,11 @@ class _BottomNaviPageState extends State<BottomNaviPage> {
             //   )
             // ],
             gradient: LinearGradient(
-                colors: [Colors.green.shade50, Colors.white],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.1, 0.4]),
+              colors: [Colors.green.shade50, Colors.white],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: const [0.1, 0.4],
+            ),
           ),
           child: SafeArea(
             child: Padding(
