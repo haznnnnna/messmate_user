@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,6 +19,31 @@ class ChoosePlans extends StatefulWidget {
 }
 
 class _ChoosePlansState extends State<ChoosePlans> {
+  List items = [
+    {
+      'title': '7',
+      'caption': 'Days Plan',
+      'subtitle': '\u{20B9}${1599.00}/ Only\n\u{20B9}${35}/meal',
+      'image': 'assets/images/plans1.png',
+      // 'backgroundColor': Colors.white,
+    },
+    {
+      'title': '30',
+      'caption': 'Days Plan',
+      'subtitle': '\u{20B9}${1599.00}/ Only\n\u{20B9}${35}/meal',
+      'image': 'assets/images/plans2.png',
+      // 'backgroundColor': Colors.green.shade100,
+    },
+    {
+      'title': '14',
+      'caption': 'Days Plan',
+      'subtitle': '\u{20B9}${1599.00}/ Only\n\u{20B9}${35}/meal',
+      'image': 'assets/images/plans3.png',
+      // 'backgroundColor': Colors.white,
+    },
+  ];
+  int selectIndex = 0;
+  int selectPlans = 0;
   DateTime? selectedDate;
   DateTime today = DateTime.now();
   List<DateTime> currentWeekDates = [];
@@ -77,40 +104,84 @@ class _ChoosePlansState extends State<ChoosePlans> {
                   // color: Colors.yellow,
                   height: height * 0.34,
                   width: width,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: width * 0.2,
-                        backgroundColor: ColorConstant.circularColor,
-                        child: Image.asset(ImageConstant.saladPlate),
-                      ),
-                      SizedBox(
-                        // color: Colors.red,
-                        height: height * 0.09,
-                        width: width * 0.2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "30",
-                              style: GoogleFonts.montserrat(
-                                  fontSize: width * 0.05,
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorConstant.primaryColor),
-                            ),
-                            Text(
-                              "Days plan",
-                              style: GoogleFonts.montserrat(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: width * 0.03,
-                                  color: ColorConstant.primaryColor),
-                            ),
-                          ],
+                  child: CarouselSlider.builder(
+                    itemCount: items.length,
+                    options: CarouselOptions(
+                      autoPlayAnimationDuration: Duration(seconds: 1),
+                      viewportFraction: 0.5,
+                      aspectRatio: 16 / 9,
+                      height: height * 0.3,
+                      // autoPlay: true,
+                      enlargeCenterPage: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          selectPlans = index;
+                        });
+                      },
+                    ),
+                    itemBuilder:
+                        (BuildContext context, int index, int realIndex) {
+                      final item = items[index];
+                      final isActive = index == selectPlans;
+                      return Container(
+                        height: height * 0.3,
+                        width: width * 0.45,
+                        margin: EdgeInsets.all(width * 0.01),
+                        decoration: BoxDecoration(
+                            color: isActive
+                                ? ColorConstant.primaryColor
+                                : ColorConstant.whiteColor,
+                            borderRadius: BorderRadius.circular(width * 0.02),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color((0xff444444)).withOpacity(0.23),
+                                  // spreadRadius: 1,
+                                  blurRadius: 5,
+                                  offset: Offset(4, 4))
+                            ]),
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Text(items[index]['title'],
+                                  style: GoogleFonts.montserrat(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: isActive ? 20 : 17,
+                                    color: isActive
+                                        ? ColorConstant.whiteColor
+                                        : ColorConstant.primaryColor,
+                                  )),
+                              Text(items[index]['caption'],
+                                  style: GoogleFonts.montserrat(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: isActive ? 15 : 13,
+                                    color: isActive
+                                        ? ColorConstant.whiteColor
+                                        : ColorConstant.primaryColor,
+                                  )),
+                              Image(
+                                fit: BoxFit.fill,
+                                image: AssetImage(items[index]['image']),
+                                height: isActive ? height * 0.15 : height * 0.1,
+                              ),
+                              Text(items[index]['subtitle'],
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.montserrat(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13,
+                                    color: isActive
+                                        ? ColorConstant.whiteColor
+                                        : ColorConstant.primaryColor,
+                                  )),
+                              // Text('\u{20B9}${35}/meal', style: GoogleFonts.montserrat(
+                              //     fontWeight: FontWeight.w600,
+                              //     fontSize: 11,
+                              //     color:ColorConstant.whiteColor
+                              // )),
+                            ],
+                          ),
                         ),
-                      )
-                    ],
+                      );
+                    },
                   ),
                 ),
                 SizedBox(
@@ -217,7 +288,7 @@ class _ChoosePlansState extends State<ChoosePlans> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   // color: Colors.pink,
                   height: height * 0.5,
                   width: width,
