@@ -8,6 +8,7 @@ import 'package:messmate_user/core/constants/imageconstant.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../core/localvariables.dart';
+import '../plans/screens/choose_plans.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -263,58 +264,63 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (BuildContext context, int index, int realIndex) {
                   final item = items[index];
                   final isActive = index == selectPlans;
-                  return Container(
-                    height: height*0.3,
-                    width: width*0.45,
-                    margin: EdgeInsets.all(width*0.01),
-                    decoration: BoxDecoration(
-                        color: isActive
-                            ? ColorConstant.primaryColor
-                            : ColorConstant.whiteColor,
-                        borderRadius: BorderRadius.circular(width*0.02),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Color((0xff444444))
-                                  .withOpacity(0.23),
-                              // spreadRadius: 1,
-                              blurRadius: 5,
-                              offset: Offset(4, 4))
-                        ]
-                    ),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          Text(items[index]['title'], style: GoogleFonts.montserrat(
-                              fontWeight: FontWeight.w700,
-                              fontSize:isActive? 20:17,
-                            color: isActive
-                                ? ColorConstant.whiteColor
-                                : ColorConstant.primaryColor,
-                          )),
-                          Text(items[index]['caption'], style: GoogleFonts.montserrat(
-                              fontWeight: FontWeight.w600,
-                            fontSize:isActive? 15:13,
-                            color: isActive
-                                ? ColorConstant.whiteColor
-                                : ColorConstant.primaryColor,
-                          )),
-                          Image(image: AssetImage(items[index]['image']),
-                            height:isActive? height*0.15:height*0.1,),
-                          Text(items[index]['subtitle'],
-                              textAlign: TextAlign.center, style: GoogleFonts.montserrat(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13,
-                                color: isActive
-                                    ? ColorConstant.whiteColor
-                                    : ColorConstant.primaryColor,
-                          )),
-                          // Text('\u{20B9}${35}/meal', style: GoogleFonts.montserrat(
-                          //     fontWeight: FontWeight.w600,
-                          //     fontSize: 11,
-                          //     color:ColorConstant.whiteColor
-                          // )),
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ChoosePlans()));
+                    },
+                    child: Container(
+                      height: height*0.3,
+                      width: width*0.45,
+                      margin: EdgeInsets.all(width*0.01),
+                      decoration: BoxDecoration(
+                          color: isActive
+                              ? ColorConstant.primaryColor
+                              : ColorConstant.whiteColor,
+                          borderRadius: BorderRadius.circular(width*0.02),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Color((0xff444444))
+                                    .withOpacity(0.23),
+                                // spreadRadius: 1,
+                                blurRadius: 5,
+                                offset: Offset(4, 4))
+                          ]
+                      ),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Text(items[index]['title'], style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w700,
+                                fontSize:isActive? 20:17,
+                              color: isActive
+                                  ? ColorConstant.whiteColor
+                                  : ColorConstant.primaryColor,
+                            )),
+                            Text(items[index]['caption'], style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w600,
+                              fontSize:isActive? 15:13,
+                              color: isActive
+                                  ? ColorConstant.whiteColor
+                                  : ColorConstant.primaryColor,
+                            )),
+                            Image(image: AssetImage(items[index]['image']),
+                              height:isActive? height*0.15:height*0.1,),
+                            Text(items[index]['subtitle'],
+                                textAlign: TextAlign.center, style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13,
+                                  color: isActive
+                                      ? ColorConstant.whiteColor
+                                      : ColorConstant.primaryColor,
+                            )),
+                            // Text('\u{20B9}${35}/meal', style: GoogleFonts.montserrat(
+                            //     fontWeight: FontWeight.w600,
+                            //     fontSize: 11,
+                            //     color:ColorConstant.whiteColor
+                            // )),
 
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );

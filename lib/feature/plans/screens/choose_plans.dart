@@ -158,11 +158,11 @@ class _ChoosePlansState extends State<ChoosePlans> {
                                         ? ColorConstant.whiteColor
                                         : ColorConstant.primaryColor,
                                   )),
-                              Image(
+                              Image(  
                                 fit: BoxFit.fill,
                                 image: AssetImage(items[index]['image']),
                                 height: isActive ? height * 0.15 : height * 0.1,
-                              ),
+                               ),
                               Text(items[index]['subtitle'],
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.montserrat(
