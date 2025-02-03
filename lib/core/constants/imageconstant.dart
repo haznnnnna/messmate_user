@@ -11,6 +11,7 @@ class ImageConstant {
   static const saladPlate="assets/images/saladPlate.png";
   static const americanPasta="assets/images/americanPasta.png";
   static const cartImg="assets/images/cartimg.png";
+  static const fridChikenPlate="assets/images/Mask Group.png";
 }
 
 
@@ -41,4 +42,5 @@ class SvgConstants {
   static const logOut="assets/svg/logOut.svg";
   static const categ1="assets/svg/categ1.svg";
   static const categ2="assets/svg/categ2.svg";
+  static const leftArrow2="assets/svg/chevron-left.svg";
 }

@@ -13,4 +13,5 @@ class ColorConstant{
   static const circularColor=Color(0xffD9D9D9);
   static const dayColor=Color(0xff797979);
   static const defaultColor=Color(0xff444444);
+  static const roseGardenColor=Color(0xff565656);
 }

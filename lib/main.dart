@@ -6,6 +6,7 @@ import 'package:messmate_user/feature/homescreen/bottonnav.dart';
 import 'cart.dart';
 import 'core/localvariables.dart';
 import 'feature/homescreen/home_screen.dart';
+import 'feature/plans/screens/checkout.dart';
 import 'feature/splashscreen/splashcreen.dart';
 import 'firebase_options.dart';
 
@@ -13,7 +14,7 @@ import 'firebase_options.dart';
 Future<void> main() async {
  WidgetsFlutterBinding.ensureInitialized();
  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
- runApp(MyApp());
+ runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Cart(),
+      home: CheckoutPage(),
     );
   }
 }
