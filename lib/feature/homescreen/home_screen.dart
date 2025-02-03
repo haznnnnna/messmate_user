@@ -18,6 +18,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<String> categories = ['All',"Chicken", "Cakes", "Fish"];
+  // List categories = [
+  //   {
+  //   'title':'All',
+  //   'icon':SvgConstants.categ1,
+  // },
+  //   {
+  //     'title':'Chicken',
+  //     'icon':SvgConstants.categ2,
+  //   },
+  //   {
+  //     'title':'Cakes',
+  //     'icon':SvgConstants.categ1,
+  //   },
+  //   {
+  //     'title':'Fish',
+  //     'icon':SvgConstants.categ1,
+  //   },
+  //
+  // ];
+  String selectCategory='All';
   int selectIndex=0;
   int selectPlans=0;
   List meals=[
@@ -129,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 count: 3,
                 effect: ScaleEffect(
                     activeDotColor:ColorConstant.primaryColor,
-                    dotColor: ColorConstant.indicatorColor.withOpacity(0.3),
+                    dotColor: ColorConstant.categoryColor,
                     dotHeight: height*0.011,
                     dotWidth: width*0.02
                 ),
@@ -141,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Align(
                   alignment: AlignmentDirectional.topStart,
-                  child: Text('ONE DAY MEAL',
+                  child: Text('Categories',
                       style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.w700,
                       fontSize: 20,
@@ -150,72 +171,208 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
           SizedBox(height: height*0.014,),
-          SizedBox(
-            height: height*0.2,
-            width: width*0.9,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding:EdgeInsets.only(
-                     left: width*0.01,
-                     right: width*0.01
-                    ),
-                    child: Stack(
-                      alignment: Alignment.topCenter,
-                      clipBehavior: Clip.none,
-                      children: [
-                        Center(
-                          child: Container(
-                            height: height*0.132,
-                            width: width*0.42,
-                            decoration: BoxDecoration(
-                              color: ColorConstant.whiteColor,
-                              borderRadius: BorderRadius.circular(width*0.08),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 8,
-                                  offset: Offset(0, 6),
+              SizedBox(
+                height: height*0.04,
+                child:
+                Padding(
+                  padding:  EdgeInsets.only(
+                    left: width*0.05,
+                    right: width*0.03,
+                  ),
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap:() {
+                          // selectCategory==categories[index]?
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryPage(Details: categories[index],),)):SizedBox.shrink();
+                          setState(() {
+                            selectCategory=categories[index];
+                          });
+                          // if(selectCategory!='All'){
+                          //   Future.delayed(Duration.zero, () {
+                          //     Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) =>
+                          //               CategoryPage(Details: categories[index], selected: selectCategory,)
+                          //       ),
+                          //     );
+                          //   });
+                          // }
+
+                        },
+                        child: Container(
+                          height: height*0.025,
+                          width: width*0.3,
+                          decoration: BoxDecoration(
+                              color:selectCategory==categories[index]? ColorConstant.primaryColor:ColorConstant.categoryColor,
+                              borderRadius: BorderRadius.circular(width*0.02),
+                              border: Border.all(
+                                  color: Colors.transparent
+                              )
+                          ),
+                          child: Center(
+                              child: Text(categories[index],
+                                style: GoogleFonts.montserrat(
+                                    fontSize: 15,
+                                    // fontWeight: FontWeight.w500,
+                                    color:selectCategory==categories[index]? ColorConstant.whiteColor:ColorConstant.blackColor
+                                ),)),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return SizedBox(
+                        width: width*0.03,
+                      );
+                    },
+                    itemCount: categories.length,
+                  ),
+                ),
+              ),
+          SizedBox(height: height*0.08,),
+              SizedBox(
+                height: height*0.2,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  scrollDirection: Axis.horizontal,
+                  physics: BouncingScrollPhysics(),
+                  itemBuilder: (BuildContext context, int index) {
+                    return  Container(
+                      height: height * 0.07,
+                      width: width * 0.42,
+                      decoration: BoxDecoration(
+                        color: ColorConstant.whiteColor,
+                        borderRadius:
+                        BorderRadius.circular(width * 0.08),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300,
+                            blurRadius: 8,
+                            offset: Offset(0, 6),
+                          ),
+                        ],
+                      ),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                            // alignment: Alignment.topCenter,
+                            bottom: -25,
+                            left: -11,
+                            child: Container(
+                                height: height*0.4,
+                                width: width * 0.5,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
                                 ),
-                              ],
-                            ),
+                                child: Image(
+                                  image:
+                                  AssetImage(ImageConstant.plans1),
+                                )),
                           ),
-                        ),
-                        Positioned(
-                          top: -6,
-                          left: 16,
-                          child: Container(
-                            height: height*0.155,
-                            width: width*0.33,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: AssetImage(meals[index]['image'],),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
+                          Positioned(
+                            top: 80,
+                            left: 15,
+                            child: Text('hjjjj',style: GoogleFonts.montserrat(
+                                color: ColorConstant.blackColor,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700
+                            )),
                           ),
-                        ),
-                        // Meal Title
-                        Positioned(
-                          bottom: 33,
-                          child: Text(meals[index]['title'],
-                            style: GoogleFonts.montserrat(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                          // Positioned(
+                          //   top: 80,
+                          //   left: 118,
+                          //   child: Icon(Icons.star,color: ColorConstants.amber,size: 22,)
+                          // ),
+                          Positioned(
+                            top: 100,
+                            left: 15,
+                            child: Text('bnnnn',style: GoogleFonts.montserrat(
+                                color: ColorConstant.blackColor,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700
+                            )),
+                          )
+                        ],
+                      ),
+                    );
+                  }, separatorBuilder: (BuildContext context, int index) {
+                  return SizedBox(
+                    width: width*0.04,
                   );
                 },
-                separatorBuilder: (context, index) {
-                  return SizedBox(width: width*0.05,);
-                },
-                itemCount: 3),
-          ),
+                ),
+              ),
+          // SizedBox(
+          //   height: height*0.2,
+          //   width: width*0.9,
+          //   child: ListView.separated(
+          //     scrollDirection: Axis.horizontal,
+          //       itemBuilder: (context, index) {
+          //         return Padding(
+          //           padding:EdgeInsets.only(
+          //            left: width*0.01,
+          //            right: width*0.01
+          //           ),
+          //           child: Stack(
+          //             alignment: Alignment.topCenter,
+          //             clipBehavior: Clip.none,
+          //             children: [
+          //               Center(
+          //                 child: Container(
+          //                   height: height*0.132,
+          //                   width: width*0.42,
+          //                   decoration: BoxDecoration(
+          //                     color: ColorConstant.whiteColor,
+          //                     borderRadius: BorderRadius.circular(width*0.08),
+          //                     boxShadow: [
+          //                       BoxShadow(
+          //                         color: Colors.grey.shade300,
+          //                         blurRadius: 8,
+          //                         offset: Offset(0, 6),
+          //                       ),
+          //                     ],
+          //                   ),
+          //                 ),
+          //               ),
+          //               Positioned(
+          //                 top: -6,
+          //                 left: 16,
+          //                 child: Container(
+          //                   height: height*0.155,
+          //                   width: width*0.33,
+          //                   decoration: BoxDecoration(
+          //                     shape: BoxShape.circle,
+          //                     image: DecorationImage(
+          //                       image: AssetImage(meals[index]['image'],),
+          //                       fit: BoxFit.fill,
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ),
+          //               // Meal Title
+          //               Positioned(
+          //                 bottom: 33,
+          //                 child: Text(meals[index]['title'],
+          //                   style: GoogleFonts.montserrat(
+          //                     fontSize: 15,
+          //                     fontWeight: FontWeight.bold,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //         );
+          //       },
+          //       separatorBuilder: (context, index) {
+          //         return SizedBox(width: width*0.05,);
+          //       },
+          //       itemCount: 3),
+          // ),
               Padding(
                 padding: EdgeInsets.only(
                     right: width*0.05

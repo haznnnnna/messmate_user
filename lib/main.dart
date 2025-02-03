@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:messmate_user/feature/homescreen/bottonnav.dart';
 
+import 'cart.dart';
 import 'core/localvariables.dart';
 import 'feature/homescreen/home_screen.dart';
 import 'feature/splashscreen/splashcreen.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNaviPage(),
+      home: Cart(),
     );
   }
 }
