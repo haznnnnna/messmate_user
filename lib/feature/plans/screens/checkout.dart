@@ -33,7 +33,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 height: height * 0.41,
                 width: width * 0.84,
                 child: Image.asset(
-                ImageConstant.fridChikenPlate,
+                ImageConstant.checkOutImg,
                   fit: BoxFit.fill,
                 ),
                 decoration: BoxDecoration(shape: BoxShape.circle),
@@ -62,7 +62,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   // color: Colors.red,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,7 +97,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   child: Row(
                     children: [
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Size",style: GoogleFonts.sen(fontSize: width*0.04),),
