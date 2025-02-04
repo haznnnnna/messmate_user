@@ -12,6 +12,11 @@ class ImageConstant {
   static const americanPasta="assets/images/americanPasta.png";
   static const cartImg="assets/images/cartimg.png";
   static const checkOutImg="assets/images/Mask Group.png";
+  static const ingredientOnion="assets/images/Group.png";
+  static const ingredientChiken="assets/images/chikenIcon.png";
+  static const ingredientsGarlic="assets/images/Garlic.png";
+  static const ingredientsSalt="assets/images/Salt.png";
+  static const ingredientsPeppers="assets/images/papersIcon.png";
 }
 
 
