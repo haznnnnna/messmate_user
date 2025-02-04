@@ -37,7 +37,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         // scrollDirection: Axis.horizontal,
         child: SizedBox(
           // color: Colors.blue,
-          height: height,
+          height: height*0.9,
           width: width,
           child: Column(
             children: [
@@ -240,84 +240,88 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ],
                 ),
               ),
-              Container(
-                height: height * 0.1,
-                width: width * 1,
-                // color: Colors.purple,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      height: height * 0.04,
-                      width: width * 0.2,
-                      // color: Colors.blue,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap:() {
-                              setState(() {
-                                count--;
-                              });
 
-                            } ,
-                            child: Container(
-                              height: height * 0.026,
-                              width: width * 0.062,
-                              decoration: BoxDecoration(
-                                  color: ColorConstant.checkOutItem,
-                                  borderRadius:
-                                      BorderRadius.circular(width * 0.012)),
-                              child: Icon(Icons.minimize_outlined,color: ColorConstant.dayColor,),
-                            ),
-                          ),
-                          Text(
-                            count.toString(),
-                            style: GoogleFonts.sen(
-                                fontSize: width * 0.052,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                             setState(() {
-                               count++;
-                             });
-                            },
-                            child: Container(
-                              height: height * 0.026,
-                              width: width * 0.062,
-                              decoration: BoxDecoration(
-                                  color: ColorConstant.checkOutItem,
-                                  borderRadius:
-                                      BorderRadius.circular(width * 0.012)),
-                              child: Icon(
-                                CupertinoIcons.plus,
-                                color: ColorConstant.dayColor,
-                                size: width * 0.045,
-                              ),
-                            ),
-                          )
-                        ],
+            ],
+          ),
+        ),
+      ),
+
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: height * 0.1,
+          width: width * 1,
+          // color: Colors.purple,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: height * 0.04,
+                width: width * 0.2,
+                // color: Colors.blue,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap:() {
+                        setState(() {
+                          count--;
+                        });
+
+                      } ,
+                      child: Container(
+                        height: height * 0.026,
+                        width: width * 0.062,
+                        decoration: BoxDecoration(
+                            color: ColorConstant.checkOutItem,
+                            borderRadius:
+                            BorderRadius.circular(width * 0.012)),
+                        child: Icon(Icons.minimize_outlined,color: ColorConstant.dayColor,),
                       ),
                     ),
-                    Container(
-                      height: height * 0.04,
-                      width: width * 0.4,
-                      decoration: BoxDecoration(
-                          color: ColorConstant.primaryColor,
-                          borderRadius: BorderRadius.circular(width * 0.023)),
-                      child: Center(
-                        child: Text(
-                          "Add to cart",
-                          style: GoogleFonts.sen(
-                              color: ColorConstant.whiteColor,
-                              fontSize: width * 0.05,
-                              fontWeight: FontWeight.bold),
+                    Text(
+                      count.toString(),
+                      style: GoogleFonts.sen(
+                          fontSize: width * 0.052,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          count++;
+                        });
+                      },
+                      child: Container(
+                        height: height * 0.026,
+                        width: width * 0.062,
+                        decoration: BoxDecoration(
+                            color: ColorConstant.checkOutItem,
+                            borderRadius:
+                            BorderRadius.circular(width * 0.012)),
+                        child: Icon(
+                          CupertinoIcons.plus,
+                          color: ColorConstant.dayColor,
+                          size: width * 0.045,
                         ),
                       ),
                     )
                   ],
+                ),
+              ),
+              Container(
+                height: height * 0.04,
+                width: width * 0.4,
+                decoration: BoxDecoration(
+                    color: ColorConstant.primaryColor,
+                    borderRadius: BorderRadius.circular(width * 0.023)),
+                child: Center(
+                  child: Text(
+                    "Add to cart",
+                    style: GoogleFonts.sen(
+                        color: ColorConstant.whiteColor,
+                        fontSize: width * 0.05,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               )
             ],
