@@ -13,6 +13,7 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  bool tap = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +34,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 height: height * 0.41,
                 width: width * 0.84,
                 child: Image.asset(
-                ImageConstant.checkOutImg,
+                  ImageConstant.checkOutImg,
                   fit: BoxFit.fill,
                 ),
                 decoration: BoxDecoration(shape: BoxShape.circle),
@@ -90,29 +91,122 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: height * 0.085,
-                  width: width * 1,
-                  color: Colors.red,
+                  width: width * 0.9,
+                  // color: Colors.red,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Size",style: GoogleFonts.sen(fontSize: width*0.04),),
-                          Text("Medium")
+                          Text(
+                            "Size",
+                            style: GoogleFonts.sen(fontSize: width * 0.04),
+                          ),
+                          Text(
+                            "Medium",
+                            style: GoogleFonts.sen(fontSize: width * 0.049),
+                          )
                         ],
                       ),
-                      // Divider(
-                      //
-                      // )
+                      Container(
+                        height: height * 0.04,
+                        width: width * 0.003,
+                        color: ColorConstant.defaultColor,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Size",
+                            style: GoogleFonts.sen(fontSize: width * 0.04),
+                          ),
+                          Text(
+                            "Medium",
+                            style: GoogleFonts.sen(fontSize: width * 0.049),
+                          )
+                        ],
+                      ),
+                      Container(
+                        height: height * 0.04,
+                        width: width * 0.003,
+                        color: ColorConstant.defaultColor,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Size",
+                            style: GoogleFonts.sen(fontSize: width * 0.04),
+                          ),
+                          Text(
+                            "Medium",
+                            style: GoogleFonts.sen(fontSize: width * 0.049),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                AnimatedSize(
+                  duration: Duration(microseconds: 300),
+                  curve: Curves.easeInOut,
+                  child: Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipisc ing elit. Quis scelerisque sit eu read more ssssssssssssssssssssssssf ffffffffffffww rwwwwwwwwwwwwfwwfw55555555555555555555555554uuuuuuuuuuuuu",
+                    overflow: TextOverflow.fade,
+                    maxLines: tap ? null : 2 ,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: ()=> setState(() => tap = !tap ),
+                  child: Text(tap ? "Read Less" : "Read More",style: GoogleFonts.sen(fontSize: 19),),
+                ),
+                Container(
+                  height: height*0.15,
+                  width: width*1,
+                  // color: Colors.blue,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Ingridents",style: GoogleFonts.sen(
+                        fontSize: width*0.045
+                      ),),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children:   List.generate(4, (index) {
+                        return Container(
+                          height: height*0.11,
+                          width: width*0.15,
+                          color: Colors.red,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                height: height*0.07,
+                                width: width*0.15,
+                                decoration: BoxDecoration(
+                                  color:ColorConstant.checkOutItem,
+                                  shape: BoxShape.circle
+                                ),
+                              ),
+                              Text("Pappers",style: GoogleFonts.sen(fontSize: width*0.033),)
+                            ],
+                          ),
+                        );
+                      },),
+
+                    )
                     ],
                   ),
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );

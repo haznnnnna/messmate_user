@@ -14,4 +14,5 @@ class ColorConstant{
   static const dayColor=Color(0xff797979);
   static const defaultColor=Color(0xff444444);
   static const roseGardenColor=Color(0xff565656);
+  static const checkOutItem=Color(0xffD8D2DE);
 }
