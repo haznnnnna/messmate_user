@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
@@ -15,13 +16,30 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+  List<int>count=[];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    count=List.filled(cart.length, 0);
+  }
+
+  int getTotal() {
+    int total = 0;
+    for (int i = 0; i < cart.length; i++) {
+      total += int.parse(cart[i]['price']) * count[i];
+    }
+    return total;
+  }
+
+
   List cart=[
     {
       'name':'Fried Chicken',
       'price':'240' ,
     },
     {
-      'name':'Fried Rice',
+      'name':'Chin Fried Rice',
       'price':'450' ,
     },
     {
@@ -29,6 +47,8 @@ class _CartState extends State<Cart> {
       'price':'450' ,
     }
   ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,14 +101,14 @@ class _CartState extends State<Cart> {
                                 color: ColorConstant.lightblackColor,
                                 borderRadius: BorderRadius.circular(width*0.03)
                               ),
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    top: height*0.03
-                                  ),
-                                  child: Image(
-                                    alignment: Alignment.center,
-                                    image: AssetImage(ImageConstant.cartImg),fit: BoxFit.fill,),
-                                ),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        top: height*0.01
+                                      ),
+                                      child: Image.asset(ImageConstant.checkOutImg,),
+                                    )),
                               ),),
                           ),
                           Align(
@@ -127,19 +147,35 @@ class _CartState extends State<Cart> {
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  CircleAvatar(
-                                    radius: 10,
-                                    backgroundColor: ColorConstant.whiteColor,
-                                      child: Icon(CupertinoIcons.minus,size: height*0.015,)),
+                                  GestureDetector(
+                                    onTap: () {
+                                      if(count[index]>0){
+                                        setState(() {
+                                          count[index]--;
+                                        });
+                                      }
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 10,
+                                      backgroundColor: ColorConstant.whiteColor,
+                                        child: Icon(CupertinoIcons.minus,size: height*0.015,)),
+                                  ),
                                   SizedBox(width: width*0.02,),
-                                  Text('10',style: GoogleFonts.montserrat(
+                                  Text('${count[index]}',style: GoogleFonts.montserrat(
                                       fontSize: 15
                                   ),),
                                   SizedBox(width: width*0.02,),
-                                  CircleAvatar(
-                                      radius: 10,
-                                      backgroundColor: ColorConstant.whiteColor,
-                                      child: Icon(CupertinoIcons.add,size: height*0.015,)),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        count[index]++;
+                                      });
+                                    },
+                                    child: CircleAvatar(
+                                        radius: 10,
+                                        backgroundColor: ColorConstant.whiteColor,
+                                        child: Icon(CupertinoIcons.add,size: height*0.015,)),
+                                  ),
                                 ],
                               ),
                             ),
@@ -151,7 +187,7 @@ class _CartState extends State<Cart> {
                   separatorBuilder: (BuildContext context, int index) {
                     return SizedBox(height: height*0.02,);
                   },
-                  itemCount: 3,
+                  itemCount: cart.length,
                 ),
               ),
               Container(
@@ -166,80 +202,132 @@ class _CartState extends State<Cart> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Fried Chicken',style: GoogleFonts.almarai(
-                              fontSize: 15
-                          )),
-                          Text('Rs 240',style: GoogleFonts.almarai(
-                              fontSize: 15,
-                            fontWeight: FontWeight.bold
-                          )),
-                        ],
+                      Column(
+                        children: List.generate(cart.length, (index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(cart[index]["name"],
+                                    style: GoogleFonts.almarai(fontSize: 15)),
+                                Text('Rs. ${int.parse(cart[index]["price"]) * count[index]}',
+                                    style: GoogleFonts.almarai(fontSize: 15, fontWeight: FontWeight.bold)),
+
+                              ],
+                            ),
+                          );
+                        }),
+                      ),
+                      Dash(
+                        length: 310,
+                        dashColor: ColorConstant.dayColor,
+                        dashLength: 3, // Dash size
+                        dashGap: 2, // Gap between dashes
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Fried Rice',style: GoogleFonts.almarai(
-                              fontSize: 15
-                          )),
-                          Text('Rs 450',style: GoogleFonts.almarai(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold
-                          )),
+                          Text('Total', style: GoogleFonts.almarai(fontSize: 15)),
+                          Text('Rs. ${getTotal()}',
+                              style: GoogleFonts.almarai(
+                                  fontSize: 15, fontWeight: FontWeight.bold)),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Tangerine Salad',style: GoogleFonts.almarai(
-                              fontSize: 15
-                          )),
-                          Text('Rs 450',style: GoogleFonts.almarai(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold
-                          )),
-                        ],
-                      ),
-                    Dash(
-                      length: 310,
-                      dashColor: ColorConstant.dayColor,
-                      dashLength: 3, // Dash size
-                      dashGap: 2, // Gap between dashes
-                    ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Total',style: GoogleFonts.almarai(
-                          fontSize: 15
-                      )),
-                      Text('Rs  650',style: GoogleFonts.almarai(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold
-                      )),
-                    ],
-                  ),
                       Container(
-                        height: height*0.07,
-                        width: width*0.7,
+                        height: height * 0.07,
+                        width: width * 0.7,
                         decoration: BoxDecoration(
-                          color: ColorConstant.primaryColor,
-                          borderRadius: BorderRadius.circular(width*0.07)
-                        ),
+                            color: ColorConstant.primaryColor,
+                            borderRadius: BorderRadius.circular(width * 0.07)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Checkout',style: GoogleFonts.almarai(
-                                fontSize: 16,
-                                color: ColorConstant.whiteColor,
-                                fontWeight: FontWeight.w700
-                            )),
-                            SizedBox(width: width*0.02,),
-                            Icon(CupertinoIcons.arrow_right,color: ColorConstant.whiteColor,size: height*0.03,)
+                            Text('Checkout',
+                                style: GoogleFonts.almarai(
+                                    fontSize: 16,
+                                    color: ColorConstant.whiteColor,
+                                    fontWeight: FontWeight.w700)),
+                            SizedBox(width: width * 0.02),
+                            Icon(CupertinoIcons.arrow_right,
+                                color: ColorConstant.whiteColor, size: height * 0.03)
                           ],
                         ),
                       )
+                  //     Row(
+                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //       children: [
+                  //         Text('Fried Chicken',style: GoogleFonts.almarai(
+                  //             fontSize: 15
+                  //         )),
+                  //         Text('Rs 240',style: GoogleFonts.almarai(
+                  //             fontSize: 15,
+                  //           fontWeight: FontWeight.bold
+                  //         )),
+                  //       ],
+                  //     ),
+                  //     Row(
+                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //       children: [
+                  //         Text('Fried Rice',style: GoogleFonts.almarai(
+                  //             fontSize: 15
+                  //         )),
+                  //         Text('Rs 450',style: GoogleFonts.almarai(
+                  //             fontSize: 15,
+                  //             fontWeight: FontWeight.bold
+                  //         )),
+                  //       ],
+                  //     ),
+                  //     Row(
+                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //       children: [
+                  //         Text('Tangerine Salad',style: GoogleFonts.almarai(
+                  //             fontSize: 15
+                  //         )),
+                  //         Text('Rs 450',style: GoogleFonts.almarai(
+                  //             fontSize: 15,
+                  //             fontWeight: FontWeight.bold
+                  //         )),
+                  //       ],
+                  //     ),
+                  //   Dash(
+                  //     length: 310,
+                  //     dashColor: ColorConstant.dayColor,
+                  //     dashLength: 3, // Dash size
+                  //     dashGap: 2, // Gap between dashes
+                  //   ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     Text('Total',style: GoogleFonts.almarai(
+                  //         fontSize: 15
+                  //     )),
+                  //     Text('Rs  650',style: GoogleFonts.almarai(
+                  //         fontSize: 15,
+                  //         fontWeight: FontWeight.bold
+                  //     )),
+                  //   ],
+                  // ),
+                  //     Container(
+                  //       height: height*0.07,
+                  //       width: width*0.7,
+                  //       decoration: BoxDecoration(
+                  //         color: ColorConstant.primaryColor,
+                  //         borderRadius: BorderRadius.circular(width*0.07)
+                  //       ),
+                  //       child: Row(
+                  //         mainAxisAlignment: MainAxisAlignment.center,
+                  //         children: [
+                  //           Text('Checkout',style: GoogleFonts.almarai(
+                  //               fontSize: 16,
+                  //               color: ColorConstant.whiteColor,
+                  //               fontWeight: FontWeight.w700
+                  //           )),
+                  //           SizedBox(width: width*0.02,),
+                  //           Icon(CupertinoIcons.arrow_right,color: ColorConstant.whiteColor,size: height*0.03,)
+                  //         ],
+                  //       ),
+                  //     )
                     ],
                   ),
                 ),
