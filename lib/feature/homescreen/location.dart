@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/localvariables.dart';
 
@@ -19,32 +19,32 @@ class _LocationScreenState extends State<LocationScreen> {
   double? CurrentLongitude;
   double temperature01 = 0;
 
-  getCurrentLocation() async {
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return;
-      }
-    }
-    if (permission == LocationPermission.deniedForever) {
-      return;
-    }
-    Position position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
-    // print('Latitude: ${position.latitude}, Longitude: ${position.longitude}');
-    CurrentLatitude= position.latitude;
-    CurrentLongitude= position.longitude;
-
-
-    // getdata();
-
-    setState(() {
-
-    });
-    // print(position.latitude.runtimeType);
-  }
+  // getCurrentLocation() async {
+  //   LocationPermission permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied) {
+  //     permission = await Geolocator.requestPermission();
+  //     if (permission == LocationPermission.denied) {
+  //       return;
+  //     }
+  //   }
+  //   if (permission == LocationPermission.deniedForever) {
+  //     return;
+  //   }
+  //   Position position = await Geolocator.getCurrentPosition(
+  //     desiredAccuracy: LocationAccuracy.high,
+  //   );
+  //   // print('Latitude: ${position.latitude}, Longitude: ${position.longitude}');
+  //   CurrentLatitude= position.latitude;
+  //   CurrentLongitude= position.longitude;
+  //
+  //
+  //   // getdata();
+  //
+  //   setState(() {
+  //
+  //   });
+  //   // print(position.latitude.runtimeType);
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -261,7 +261,7 @@ class _LocationScreenState extends State<LocationScreen> {
                           padding: const EdgeInsets.only(left: 8.0),
                           child: GestureDetector(
                             onTap: () {
-                              getCurrentLocation();
+                              // getCurrentLocation();
                             },
                             child: Container(
                               height: height * 0.06,

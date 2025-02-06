@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/constants/imageconstant.dart';
 
-import 'core/localvariables.dart';
+import '../../core/localvariables.dart';
 
 class Cart extends StatefulWidget {
   const Cart({super.key});

@@ -8,6 +8,7 @@ class ImageConstant {
   static const carouselImage="assets/images/carouselImage.png";
   static const meal1="assets/images/meal1.png";
   static const plans1="assets/images/plans1.png";
+  static const plans3="assets/images/plans3.png";
   static const saladPlate="assets/images/saladPlate.png";
   static const americanPasta="assets/images/americanPasta.png";
   static const cartImg="assets/images/cartimg.png";
@@ -17,6 +18,7 @@ class ImageConstant {
   static const ingredientsGarlic="assets/images/Garlic.png";
   static const ingredientsSalt="assets/images/Salt.png";
   static const ingredientsPeppers="assets/images/papersIcon.png";
+  static const profileImg="assets/images/profile_img.png";
 }
 
 
@@ -47,5 +49,6 @@ class SvgConstants {
   static const logOut="assets/svg/logOut.svg";
   static const categ1="assets/svg/categ1.svg";
   static const categ2="assets/svg/categ2.svg";
+  static const categ3="assets/svg/hotdogs.svg";
   static const leftArrow2="assets/svg/chevron-left.svg";
 }

@@ -8,6 +8,7 @@ import 'package:messmate_user/core/constants/imageconstant.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../core/localvariables.dart';
+import '../plans/screens/checkout.dart';
 import '../plans/screens/choose_plans.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,26 +19,67 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> categories = ['All',"Chicken", "Cakes", "Fish"];
-  // List categories = [
-  //   {
-  //   'title':'All',
-  //   'icon':SvgConstants.categ1,
-  // },
-  //   {
-  //     'title':'Chicken',
-  //     'icon':SvgConstants.categ2,
-  //   },
-  //   {
-  //     'title':'Cakes',
-  //     'icon':SvgConstants.categ1,
-  //   },
-  //   {
-  //     'title':'Fish',
-  //     'icon':SvgConstants.categ1,
-  //   },
-  //
-  // ];
+ List foodItems = [
+    {
+      'image': ImageConstant.checkOutImg,
+      'title': 'Veggie tomato',
+      'price': '\$9.22',
+      'order': 'order',
+    },
+    {
+      'image': ImageConstant.checkOutImg,
+      'title': 'Fried chicken m.',
+      'price': '\$9.22',
+      'order': 'order',
+    },
+    {
+      'image': ImageConstant.checkOutImg,
+      'title': 'Veggie t.',
+      'price': '\$9.22',
+      'order': 'order',
+    },
+  ];
+
+ List foodItems2 = [
+   {
+     'image': ImageConstant.plans1,
+     'title': 'Veggie tomato',
+     'price': '\$9.22',
+     'order': 'order',
+   },
+   {
+     'image': ImageConstant.plans1,
+     'title': 'Fried chicken m.',
+     'price': '\$9.22',
+     'order': 'order',
+   },
+   {
+     'image': ImageConstant.plans1,
+     'title': 'Veggie t.',
+     'price': '\$9.22',
+     'order': 'order',
+   },
+ ];
+
+  List categories = [
+    {
+    'title':'All',
+    'icon':SvgConstants.categ1,
+  },
+    {
+      'title':'Meat',
+      'icon':SvgConstants.categ2,
+    },
+    {
+      'title':'Veggie',
+      'icon':SvgConstants.categ1,
+    },
+    {
+      'title':'Hot dogs',
+      'icon':SvgConstants.categ3,
+    },
+
+  ];
   String selectCategory='All';
   int selectIndex=0;
   int selectPlans=0;
@@ -87,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: ColorConstant.whiteColor,
         title: Padding(
           padding: EdgeInsets.all(width*0.03),
-          child: Text('Good morning\nAlexa',style: GoogleFonts.montserrat(
+          child: Text("Let's find your\nfavorite food!",style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w700,
             fontSize: 20,
             color:ColorConstant.blackColor
@@ -95,17 +137,24 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           SvgPicture.asset(SvgConstants.notification,),
-          SizedBox(width: width*0.004,),
+          SizedBox(width: width*0.03,),
           Padding(
-            padding: EdgeInsets.all(width*0.04),
-            child: SvgPicture.asset(SvgConstants.activePlan,),
+            padding: EdgeInsets.only(
+              right: width*0.06
+            ),
+            child: CircleAvatar(
+              radius: 15,
+              backgroundImage: AssetImage(ImageConstant.profileImg),
+            ),
           ),
         ],
       ),
-      body: Center(
+      body:
+      Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(height: height*0.03,),
               CarouselSlider.builder(
                 itemCount: 3,
                 options:CarouselOptions(
@@ -173,8 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: height*0.014,),
               SizedBox(
                 height: height*0.04,
-                child:
-                Padding(
+                child: Padding(
                   padding:  EdgeInsets.only(
                     left: width*0.05,
                     right: width*0.03,
@@ -188,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           // selectCategory==categories[index]?
                           // Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryPage(Details: categories[index],),)):SizedBox.shrink();
                           setState(() {
-                            selectCategory=categories[index];
+                            selectCategory=categories[index]['title'];
                           });
                           // if(selectCategory!='All'){
                           //   Future.delayed(Duration.zero, () {
@@ -203,24 +251,46 @@ class _HomeScreenState extends State<HomeScreen> {
                           // }
 
                         },
-                        child: Container(
-                          height: height*0.025,
-                          width: width*0.3,
-                          decoration: BoxDecoration(
-                              color:selectCategory==categories[index]? ColorConstant.primaryColor:ColorConstant.categoryColor,
-                              borderRadius: BorderRadius.circular(width*0.02),
-                              border: Border.all(
-                                  color: Colors.transparent
-                              )
+                        child:TextButton(
+                          onPressed: () {
+                            setState(() {
+                              selectCategory = categories[index]['title']; // Update the selected category
+                            });
+                          },
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            backgroundColor: selectCategory == categories[index]['title']
+                                ? ColorConstant.primaryColor
+                                : ColorConstant.categoryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(width * 0.07),
+                              side: selectCategory == categories[index]['title']
+                                  ? BorderSide.none
+                                  : BorderSide(
+                                color: ColorConstant.blackColor, // Border for unselected categories
+                                width: 1,
+                              ),
+                            ),
                           ),
-                          child: Center(
-                              child: Text(categories[index],
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              if (categories[index]['title'] != "All")
+                                SvgPicture.asset(categories[index]['icon'],height: height*0.02,),
+                              if (categories[index]['title'] != "All") SizedBox(width: 5),
+                              Text(
+                                categories[index]['title'],
                                 style: GoogleFonts.montserrat(
-                                    fontSize: 15,
-                                    // fontWeight: FontWeight.w500,
-                                    color:selectCategory==categories[index]? ColorConstant.whiteColor:ColorConstant.blackColor
-                                ),)),
-                        ),
+                                  fontSize: 15,
+                                  color: selectCategory == categories[index]['title']
+                                      ? ColorConstant.whiteColor
+                                      : ColorConstant.blackColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
                       );
                     },
                     separatorBuilder: (BuildContext context, int index) {
@@ -232,257 +302,205 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-          SizedBox(height: height*0.08,),
-              SizedBox(
-                height: height*0.2,
-                child: ListView.separated(
+            SizedBox(height: height*0.02,),
+              Container(
+                height: height*0.3,
+                width: width*1,
+                child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: 3,
                   scrollDirection: Axis.horizontal,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
-                    return  Container(
-                      height: height * 0.07,
-                      width: width * 0.42,
-                      decoration: BoxDecoration(
-                        color: ColorConstant.whiteColor,
-                        borderRadius:
-                        BorderRadius.circular(width * 0.08),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade300,
-                            blurRadius: 8,
-                            offset: Offset(0, 6),
-                          ),
-                        ],
+                    return  Padding(
+                      padding:  EdgeInsets.only(
+                        left: width*0.02,
                       ),
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Positioned(
-                            // alignment: Alignment.topCenter,
-                            bottom: -25,
-                            left: -11,
-                            child: Container(
-                                height: height*0.4,
-                                width: width * 0.5,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(
+                            image: foodItems[index]['image'],
+                            title: foodItems[index]['title'],
+                            price: foodItems[index]['price'],
+                            order: foodItems[index]['order'],),));
+                        },
+                        child: Stack(
+                            children:[
+                              Align(
+                                // alignment:Alignment.bottomCenter,
+                                child: Container(
+                                  margin: EdgeInsets.all(width*0.04),
+                                  height: height*0.23,
+                                  width: width*0.43,
+                                  decoration: BoxDecoration(
+                                    color: ColorConstant.whiteColor,
+                                    borderRadius:
+                                    BorderRadius.circular(width * 0.08),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.shade300,
+                                        blurRadius: 8,
+                                        offset: Offset(0, 6),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                child: Image(
-                                  image:
-                                  AssetImage(ImageConstant.plans1),
-                                )),
-                          ),
-                          Positioned(
-                            top: 80,
-                            left: 15,
-                            child: Text('hjjjj',style: GoogleFonts.montserrat(
-                                color: ColorConstant.blackColor,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700
-                            )),
-                          ),
-                          // Positioned(
-                          //   top: 80,
-                          //   left: 118,
-                          //   child: Icon(Icons.star,color: ColorConstants.amber,size: 22,)
-                          // ),
-                          Positioned(
-                            top: 100,
-                            left: 15,
-                            child: Text('bnnnn',style: GoogleFonts.montserrat(
-                                color: ColorConstant.blackColor,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700
-                            )),
-                          )
-                        ],
-                      ),
-                    );
-                  }, separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    width: width*0.04,
-                  );
-                },
-                ),
-              ),
-          // SizedBox(
-          //   height: height*0.2,
-          //   width: width*0.9,
-          //   child: ListView.separated(
-          //     scrollDirection: Axis.horizontal,
-          //       itemBuilder: (context, index) {
-          //         return Padding(
-          //           padding:EdgeInsets.only(
-          //            left: width*0.01,
-          //            right: width*0.01
-          //           ),
-          //           child: Stack(
-          //             alignment: Alignment.topCenter,
-          //             clipBehavior: Clip.none,
-          //             children: [
-          //               Center(
-          //                 child: Container(
-          //                   height: height*0.132,
-          //                   width: width*0.42,
-          //                   decoration: BoxDecoration(
-          //                     color: ColorConstant.whiteColor,
-          //                     borderRadius: BorderRadius.circular(width*0.08),
-          //                     boxShadow: [
-          //                       BoxShadow(
-          //                         color: Colors.grey.shade300,
-          //                         blurRadius: 8,
-          //                         offset: Offset(0, 6),
-          //                       ),
-          //                     ],
-          //                   ),
-          //                 ),
-          //               ),
-          //               Positioned(
-          //                 top: -6,
-          //                 left: 16,
-          //                 child: Container(
-          //                   height: height*0.155,
-          //                   width: width*0.33,
-          //                   decoration: BoxDecoration(
-          //                     shape: BoxShape.circle,
-          //                     image: DecorationImage(
-          //                       image: AssetImage(meals[index]['image'],),
-          //                       fit: BoxFit.fill,
-          //                     ),
-          //                   ),
-          //                 ),
-          //               ),
-          //               // Meal Title
-          //               Positioned(
-          //                 bottom: 33,
-          //                 child: Text(meals[index]['title'],
-          //                   style: GoogleFonts.montserrat(
-          //                     fontSize: 15,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                 ),
-          //               ),
-          //             ],
-          //           ),
-          //         );
-          //       },
-          //       separatorBuilder: (context, index) {
-          //         return SizedBox(width: width*0.05,);
-          //       },
-          //       itemCount: 3),
-          // ),
-              Padding(
-                padding: EdgeInsets.only(
-                    right: width*0.05
-                ),
-                child: Align(
-                  alignment: AlignmentDirectional.topEnd,
-                  child: Text('see more',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                        color:ColorConstant.primaryColor
-                    ),),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: width*0.05
-                ),
-                child: Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Text('PLANS FOR YOU',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                        color:ColorConstant.blackColor
-                    ),),
-                ),
-              ),
-              CarouselSlider.builder(
-                itemCount: items.length,
-                options:CarouselOptions(
-                  autoPlayAnimationDuration: Duration(
-                      seconds: 1
-                  ),
-                  viewportFraction: 0.5,
-                  aspectRatio: 16 / 9,
-                  height: height*0.3,
-                  // autoPlay: true,
-                  enlargeCenterPage: true,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      selectPlans=index;
-                    });
-                  },
-                ) ,
-                itemBuilder: (BuildContext context, int index, int realIndex) {
-                  final item = items[index];
-                  final isActive = index == selectPlans;
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ChoosePlans()));
-                    },
-                    child: Container(
-                      height: height*0.3,
-                      width: width*0.45,
-                      margin: EdgeInsets.all(width*0.01),
-                      decoration: BoxDecoration(
-                          color: isActive
-                              ? ColorConstant.primaryColor
-                              : ColorConstant.whiteColor,
-                          borderRadius: BorderRadius.circular(width*0.02),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color((0xff444444))
-                                    .withOpacity(0.23),
-                                // spreadRadius: 1,
-                                blurRadius: 5,
-                                offset: Offset(4, 4))
-                          ]
-                      ),
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Text(items[index]['title'], style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w700,
-                                fontSize:isActive? 20:17,
-                              color: isActive
-                                  ? ColorConstant.whiteColor
-                                  : ColorConstant.primaryColor,
-                            )),
-                            Text(items[index]['caption'], style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w600,
-                              fontSize:isActive? 15:13,
-                              color: isActive
-                                  ? ColorConstant.whiteColor
-                                  : ColorConstant.primaryColor,
-                            )),
-                            Image(image: AssetImage(items[index]['image']),
-                              height:isActive? height*0.15:height*0.1,),
-                            Text(items[index]['subtitle'],
-                                textAlign: TextAlign.center, style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 13,
-                                  color: isActive
-                                      ? ColorConstant.whiteColor
-                                      : ColorConstant.primaryColor,
-                            )),
-                            // Text('\u{20B9}${35}/meal', style: GoogleFonts.montserrat(
-                            //     fontWeight: FontWeight.w600,
-                            //     fontSize: 11,
-                            //     color:ColorConstant.whiteColor
-                            // )),
-
-                          ],
+                              ),
+                              Align(
+                                alignment:Alignment.topCenter,
+                                child: Container(
+                                    // height: height*0.18,
+                                    height: height*0.16,
+                                    width: width * 0.5,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.asset(foodItems[index]['image'],)),
+                              ),
+                              Align(
+                                alignment:Alignment.center,
+                                child:
+                                Padding(
+                                  padding:  EdgeInsets.only(
+                                    left: width*0.08,
+                                    top: height*0.12
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(foodItems[index]['title'],style: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15
+                                      )),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text(foodItems[index]['price'],style: GoogleFonts.montserrat(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16
+                                          ),),
+                                          SizedBox(width:width*0.09),
+                                          Text(foodItems[index]['order'],style: GoogleFonts.montserrat(
+                                              fontWeight: FontWeight.w500,
+                                              color: ColorConstant.blue,
+                                              fontSize: 16
+                                          )),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                // Text(foodItems[index]['price']),
+                              ),
+                            ]
                         ),
                       ),
-                    ),
-                  );
-                },),
+                    );
+                  },
+                ),
+              ),
+              Container(
+                height: height*0.3,
+                width: width*1,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  scrollDirection: Axis.horizontal,
+                  physics: BouncingScrollPhysics(),
+                  itemBuilder: (BuildContext context, int index) {
+                    return  Padding(
+                      padding:  EdgeInsets.only(
+                        left: width*0.02,
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(
+                            image: foodItems2[index]['image'],
+                            title: foodItems2[index]['title'],
+                            price: foodItems2[index]['price'],
+                            order: foodItems2[index]['order'],),));
+                        },
+                        child: Stack(
+                            children:[
+                              Align(
+                                alignment:Alignment.bottomCenter,
+                                child: Container(
+                                  margin: EdgeInsets.all(width*0.04),
+                                  height: height*0.23,
+                                  width: width*0.43,
+                                  decoration: BoxDecoration(
+                                    color: ColorConstant.whiteColor,
+                                    borderRadius:
+                                    BorderRadius.circular(width * 0.08),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.shade300,
+                                        blurRadius: 8,
+                                        offset: Offset(0, 6),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment:Alignment.topCenter,
+                                child: Container(
+                                    height: height*0.18,
+                                    width: width * 0.5,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.asset(foodItems2[index]['image'])
+                                ),
+                              ),
+                              Align(
+                                alignment:Alignment.center,
+                                child:
+                                Padding(
+                                  padding:  EdgeInsets.only(
+                                      left: width*0.08,
+                                      top: height*0.12
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(foodItems2[index]['title'],style: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15
+                                      )),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text(foodItems2[index]['price'],style: GoogleFonts.montserrat(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16
+                                          ),),
+                                          SizedBox(width:width*0.09),
+                                          Text(foodItems2[index]['order'],style: GoogleFonts.montserrat(
+                                              fontWeight: FontWeight.w500,
+                                              color: ColorConstant.blue,
+                                              fontSize: 16
+                                          )),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                // Text(foodItems[index]['price']),
+                              ),
 
+
+                            ]
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
