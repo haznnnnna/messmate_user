@@ -16,4 +16,5 @@ class ColorConstant{
   static const roseGardenColor=Color(0xff565656);
   static const checkOutItem=Color(0xffD8D2DE);
   static const blue=Color(0xff6A4493);
+  static const paymentPageInr=Color(0xff023168);
 }
