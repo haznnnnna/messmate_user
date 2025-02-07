@@ -19,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
- List foodItems = [
+  List foodItems = [
     {
       'image': ImageConstant.checkOutImg,
       'title': 'Veggie tomato',
@@ -40,32 +40,32 @@ class _HomeScreenState extends State<HomeScreen> {
     },
   ];
 
- List foodItems2 = [
-   {
-     'image': ImageConstant.plans1,
-     'title': 'Veggie tomato',
-     'price': '\$9.22',
-     'order': 'order',
-   },
-   {
-     'image': ImageConstant.plans1,
-     'title': 'Fried chicken m.',
-     'price': '\$9.22',
-     'order': 'order',
-   },
-   {
-     'image': ImageConstant.plans1,
-     'title': 'Veggie t.',
-     'price': '\$9.22',
-     'order': 'order',
-   },
- ];
+  List foodItems2 = [
+    {
+      'image': ImageConstant.plans1,
+      'title': 'Veggie tomato',
+      'price': '\$9.22',
+      'order': 'order',
+    },
+    {
+      'image': ImageConstant.plans1,
+      'title': 'Fried chicken m.',
+      'price': '\$9.22',
+      'order': 'order',
+    },
+    {
+      'image': ImageConstant.plans1,
+      'title': 'Veggie t.',
+      'price': '\$9.22',
+      'order': 'order',
+    },
+  ];
 
   List categories = [
     {
-    'title':'All',
-    'icon':SvgConstants.categ1,
-  },
+      'title':'All',
+      'icon':SvgConstants.categ1,
+    },
     {
       'title':'Meat',
       'icon':SvgConstants.categ2,
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   ];
 
-   List items = [
+  List items = [
     {
       'title': '7',
       'caption':'Days Plan',
@@ -130,9 +130,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Padding(
           padding: EdgeInsets.all(width*0.03),
           child: Text("Let's find your\nfavorite food!",style: GoogleFonts.montserrat(
-            fontWeight: FontWeight.w700,
-            fontSize: 20,
-            color:ColorConstant.blackColor
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+              color:ColorConstant.blackColor
           ),),
         ),
         actions: [
@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(width: width*0.03,),
           Padding(
             padding: EdgeInsets.only(
-              right: width*0.06
+                right: width*0.06
             ),
             child: CircleAvatar(
               radius: 15,
@@ -178,8 +178,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: width*1,
                     margin: EdgeInsets.all(width*0.01),
                     decoration: BoxDecoration(
-                      image: DecorationImage(image: AssetImage(ImageConstant.carouselImage),
-                      fit: BoxFit.fill),
+                        image: DecorationImage(image: AssetImage(ImageConstant.carouselImage),
+                            fit: BoxFit.fill),
                         borderRadius: BorderRadius.circular(width*0.02),
                         boxShadow: [
                           BoxShadow(
@@ -207,19 +207,19 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: height*0.01,),
               Padding(
                 padding: EdgeInsets.only(
-                  left: width*0.05
+                    left: width*0.05
                 ),
                 child: Align(
                   alignment: AlignmentDirectional.topStart,
                   child: Text('Categories',
-                      style: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20,
-                      color:ColorConstant.blackColor
-                  ),),
+                    style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        color:ColorConstant.blackColor
+                    ),),
                 ),
               ),
-          SizedBox(height: height*0.014,),
+              SizedBox(height: height*0.014,),
               SizedBox(
                 height: height*0.04,
                 child: Padding(
@@ -232,65 +232,65 @@ class _HomeScreenState extends State<HomeScreen> {
                     physics: BouncingScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                        onTap:() {
-                          // selectCategory==categories[index]?
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryPage(Details: categories[index],),)):SizedBox.shrink();
-                          setState(() {
-                            selectCategory=categories[index]['title'];
-                          });
-                          // if(selectCategory!='All'){
-                          //   Future.delayed(Duration.zero, () {
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) =>
-                          //               CategoryPage(Details: categories[index], selected: selectCategory,)
-                          //       ),
-                          //     );
-                          //   });
-                          // }
-
-                        },
-                        child:TextButton(
-                          onPressed: () {
+                          onTap:() {
+                            // selectCategory==categories[index]?
+                            // Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryPage(Details: categories[index],),)):SizedBox.shrink();
                             setState(() {
-                              selectCategory = categories[index]['title']; // Update the selected category
+                              selectCategory=categories[index]['title'];
                             });
+                            // if(selectCategory!='All'){
+                            //   Future.delayed(Duration.zero, () {
+                            //     Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) =>
+                            //               CategoryPage(Details: categories[index], selected: selectCategory,)
+                            //       ),
+                            //     );
+                            //   });
+                            // }
+
                           },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            backgroundColor: selectCategory == categories[index]['title']
-                                ? ColorConstant.primaryColor
-                                : ColorConstant.categoryColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(width * 0.07),
-                              side: selectCategory == categories[index]['title']
-                                  ? BorderSide.none
-                                  : BorderSide(
-                                color: ColorConstant.blackColor, // Border for unselected categories
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              if (categories[index]['title'] != "All")
-                                SvgPicture.asset(categories[index]['icon'],height: height*0.02,),
-                              if (categories[index]['title'] != "All") SizedBox(width: 5),
-                              Text(
-                                categories[index]['title'],
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 15,
-                                  color: selectCategory == categories[index]['title']
-                                      ? ColorConstant.whiteColor
-                                      : ColorConstant.blackColor,
+                          child:TextButton(
+                            onPressed: () {
+                              setState(() {
+                                selectCategory = categories[index]['title']; // Update the selected category
+                              });
+                            },
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              backgroundColor: selectCategory == categories[index]['title']
+                                  ? ColorConstant.primaryColor
+                                  : ColorConstant.categoryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(width * 0.07),
+                                side: selectCategory == categories[index]['title']
+                                    ? BorderSide.none
+                                    : BorderSide(
+                                  color: ColorConstant.blackColor, // Border for unselected categories
+                                  width: 1,
                                 ),
                               ),
-                            ],
-                          ),
-                        )
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (categories[index]['title'] != "All")
+                                  SvgPicture.asset(categories[index]['icon'],height: height*0.02,),
+                                if (categories[index]['title'] != "All") SizedBox(width: 5),
+                                Text(
+                                  categories[index]['title'],
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 15,
+                                    color: selectCategory == categories[index]['title']
+                                        ? ColorConstant.whiteColor
+                                        : ColorConstant.blackColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
                       );
                     },
                     separatorBuilder: (BuildContext context, int index) {
@@ -302,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-            SizedBox(height: height*0.02,),
+              SizedBox(height: height*0.02,),
               Container(
                 height: height*0.3,
                 width: width*1,
@@ -349,7 +349,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Align(
                                 alignment:Alignment.topCenter,
                                 child: Container(
-                                    // height: height*0.18,
+                                  // height: height*0.18,
                                     height: height*0.16,
                                     width: width * 0.5,
                                     decoration: const BoxDecoration(
@@ -362,8 +362,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child:
                                 Padding(
                                   padding:  EdgeInsets.only(
-                                    left: width*0.08,
-                                    top: height*0.12
+                                      left: width*0.08,
+                                      top: height*0.12
                                   ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -378,8 +378,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                                         children: [
                                           Text(foodItems[index]['price'],style: GoogleFonts.montserrat(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16
                                           ),),
                                           SizedBox(width:width*0.09),
                                           Text(foodItems[index]['order'],style: GoogleFonts.montserrat(
