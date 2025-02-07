@@ -48,6 +48,9 @@ dependencies:
   intl: ^0.20.1
   font_awesome_flutter: ^10.7.0
   flutter_dash: ^1.0.0
+  flutter_launcher_icons: ^0.14.3
+  location: ^5.0.3
+  geocoding: ^3.0.0
   geolocator: ^13.0.2
 
 dev_dependencies:

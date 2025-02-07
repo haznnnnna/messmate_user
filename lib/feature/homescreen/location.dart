@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart' as geo;  // Alias for Geolocator
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:location/location.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/localvariables.dart';
 
@@ -15,37 +18,41 @@ class _LocationScreenState extends State<LocationScreen> {
   bool selectedAddress = false;
   String selectedOption = "Home";
 
-  double? CurrentLatitude;
-  double? CurrentLongitude;
-  double temperature01 = 0;
+  String currentAddress = "Fetching location...";
 
-  // getCurrentLocation() async {
-  //   LocationPermission permission = await Geolocator.checkPermission();
-  //   if (permission == LocationPermission.denied) {
-  //     permission = await Geolocator.requestPermission();
-  //     if (permission == LocationPermission.denied) {
-  //       return;
-  //     }
-  //   }
-  //   if (permission == LocationPermission.deniedForever) {
-  //     return;
-  //   }
-  //   Position position = await Geolocator.getCurrentPosition(
-  //     desiredAccuracy: LocationAccuracy.high,
-  //   );
-  //   // print('Latitude: ${position.latitude}, Longitude: ${position.longitude}');
-  //   CurrentLatitude= position.latitude;
-  //   CurrentLongitude= position.longitude;
-  //
-  //
-  //   // getdata();
-  //
-  //   setState(() {
-  //
-  //   });
-  //   // print(position.latitude.runtimeType);
-  // }
   @override
+  void initState() {
+    super.initState();
+    getLocation();
+  }
+
+  Future<void> getLocation() async {
+    try {
+      geo.LocationPermission permission = await geo.Geolocator.checkPermission();
+      if (permission == geo.LocationPermission.denied || permission == geo.LocationPermission.deniedForever) {
+        permission = await geo.Geolocator.requestPermission();
+      }
+
+      geo.Position position = await geo.Geolocator.getCurrentPosition(
+          desiredAccuracy: geo.LocationAccuracy.high);
+
+      List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+
+      Placemark place = placemarks[0];
+      setState(() {
+        currentAddress = "${place.locality}, ${place.country}";
+      });
+
+    } catch (e) {
+      print(e);
+      setState(() {
+        currentAddress = "Could not fetch location.";
+      });
+    }
+  }
+
+
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -57,7 +64,7 @@ class _LocationScreenState extends State<LocationScreen> {
           child: TextFormField(
             textInputAction: TextInputAction.search,
             keyboardType: TextInputType.text,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               suffixIcon: Icon(Icons.search),
               labelText: "Enter location",
               filled: true,
@@ -109,44 +116,6 @@ class _LocationScreenState extends State<LocationScreen> {
                   style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.w700, fontSize: width * 0.05),
                 ),
-                // Row(
-                //   children: [
-                //     Icon(
-                //       Icons.location_on_outlined,
-                //       size: width * 0.09,
-                //       color: ColorConstant.defaultColor,
-                //     ),
-                //     SizedBox(width: width * 0.02),
-                //     Column(
-                //       crossAxisAlignment: CrossAxisAlignment.start,
-                //       children: [
-                //         Text(
-                //           "Home",
-                //           style: GoogleFonts.montserrat(
-                //               fontWeight: FontWeight.w600,
-                //               fontSize: width * 0.04),
-                //         ),
-                //         Text(
-                //           "DDRC SRL TOWER,G-131, Panampilly Nagar, Ernakulam,",
-                //           style: GoogleFonts.montserrat(
-                //               color: ColorConstant.defaultColor,
-                //               fontWeight: FontWeight.w400,
-                //               fontSize: width * 0.023),
-                //         ),
-                //       ],
-                //     ),
-                //     Radio(
-                //       value: false,
-                //       groupValue: selectedAddress,
-                //       onChanged: (bool? value) {
-                //         setState(() {
-                //           selectedAddress = value!;
-                //         });
-                //       },
-                //     ),
-                //   ],
-                // ),
-                // Divider(),
                 Row(
                   children: [
                     Icon(
@@ -192,6 +161,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     Text(
                       "Add new address",
                       style: GoogleFonts.montserrat(
+                        decoration:TextDecoration.underline,
                           fontWeight: FontWeight.w600, fontSize: width * 0.04),
                     )
                   ],
@@ -261,7 +231,7 @@ class _LocationScreenState extends State<LocationScreen> {
                           padding: const EdgeInsets.only(left: 8.0),
                           child: GestureDetector(
                             onTap: () {
-                              // getCurrentLocation();
+                              getLocation();
                             },
                             child: Container(
                               height: height * 0.06,
@@ -348,11 +318,12 @@ class _LocationScreenState extends State<LocationScreen> {
                 ),
                 Align(
                     alignment: Alignment.center,
-                    child: Text(
-                      "Back",
-                      style:
-                          GoogleFonts.montserrat(fontWeight: FontWeight.bold),
-                    ))
+                    child:Text(currentAddress)
+                    // _locationData != null
+                //         ? Text("Latitude: ${_locationData!.latitude}\n"
+                //         "Longitude: ${_locationData!.longitude}")
+                //         : Text("Press the button to get location"),
+                )
               ],
             ),
           ),

@@ -6,6 +6,7 @@ import 'package:messmate_user/feature/homescreen/bottonnav.dart';
 import 'feature/homescreen/cart.dart';
 import 'core/localvariables.dart';
 import 'feature/homescreen/home_screen.dart';
+import 'feature/homescreen/location.dart';
 import 'feature/plans/screens/checkout.dart';
 import 'feature/splashscreen/splashcreen.dart';
 import 'firebase_options.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     width=MediaQuery.of(context).size.width;
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LocationScreen(),
     );
   }
 }
