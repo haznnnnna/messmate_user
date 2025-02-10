@@ -153,11 +153,11 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ],
                 ),
-                Divider(),
+                  const Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add_location_alt_outlined),
+                    const Icon(Icons.add_location_alt_outlined),
                     Text(
                       "Add new address",
                       style: GoogleFonts.montserrat(
@@ -174,8 +174,8 @@ class _LocationScreenState extends State<LocationScreen> {
                       hintText: "House name/Building name",
                       labelStyle:
                           GoogleFonts.montserrat(fontWeight: FontWeight.w600),
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder()),
+                      border: const OutlineInputBorder(),
+                      focusedBorder: const OutlineInputBorder()),
                 ),
                 TextFormField(
                   textInputAction: TextInputAction.search,
@@ -184,8 +184,8 @@ class _LocationScreenState extends State<LocationScreen> {
                       labelText: "Road name",
                       labelStyle:
                           GoogleFonts.montserrat(fontWeight: FontWeight.w600),
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder()),
+                      border: const OutlineInputBorder(),
+                      focusedBorder: const OutlineInputBorder()),
                 ),
                 Row(
                   children: [
@@ -193,7 +193,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Pincode',
                             border: OutlineInputBorder(),
                           ),
@@ -204,7 +204,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'City',
                             border: OutlineInputBorder(),
                           ),
@@ -219,7 +219,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'State',
                             border: OutlineInputBorder(),
                           ),
@@ -243,7 +243,7 @@ class _LocationScreenState extends State<LocationScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.my_location_rounded,
                                     color: ColorConstant.whiteColor,
                                   ),
@@ -272,7 +272,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         });
                       },
                     ),
-                    Text("Home"),
+                    const Text("Home"),
 
                     Radio<String>(
                       value: "Office",
@@ -283,7 +283,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         });
                       },
                     ),
-                    Text("Office"),
+                    const Text("Office"),
 
                     Radio<String>(
                       value: "Other",
@@ -294,7 +294,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         });
                       },
                     ),
-                    Text("Other"),
+                    const Text("Other"),
                   ],
                 ),
                 Align(
