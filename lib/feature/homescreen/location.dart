@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart' as geo;  // Alias for Geolocator
+import 'package:geolocator/geolocator.dart' as geo;
 import 'package:google_fonts/google_fonts.dart';
-import 'package:introduction_screen/introduction_screen.dart';
-import 'package:location/location.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/localvariables.dart';
 
@@ -16,7 +14,7 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
   bool selectedAddress = false;
-  String selectedOption = "Home";
+  String selectedOption ="Home";
 
   String currentAddress = "Fetching location...";
 
@@ -28,21 +26,23 @@ class _LocationScreenState extends State<LocationScreen> {
 
   Future<void> getLocation() async {
     try {
-      geo.LocationPermission permission = await geo.Geolocator.checkPermission();
-      if (permission == geo.LocationPermission.denied || permission == geo.LocationPermission.deniedForever) {
+      geo.LocationPermission permission =
+          await geo.Geolocator.checkPermission();
+      if (permission == geo.LocationPermission.denied ||
+          permission == geo.LocationPermission.deniedForever) {
         permission = await geo.Geolocator.requestPermission();
       }
 
       geo.Position position = await geo.Geolocator.getCurrentPosition(
           desiredAccuracy: geo.LocationAccuracy.high);
 
-      List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
 
       Placemark place = placemarks[0];
       setState(() {
         currentAddress = "${place.locality}, ${place.country}";
       });
-
     } catch (e) {
       print(e);
       setState(() {
@@ -51,8 +51,7 @@ class _LocationScreenState extends State<LocationScreen> {
     }
   }
 
-
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -77,7 +76,7 @@ class _LocationScreenState extends State<LocationScreen> {
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: SizedBox(
-            height: height*0.87,
+            height: height * 0.87,
             width: width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,7 +152,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ],
                 ),
-                  const Divider(),
+                const Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -161,8 +160,9 @@ class _LocationScreenState extends State<LocationScreen> {
                     Text(
                       "Add new address",
                       style: GoogleFonts.montserrat(
-                        decoration:TextDecoration.underline,
-                          fontWeight: FontWeight.w600, fontSize: width * 0.04),
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.w600,
+                          fontSize: width * 0.04),
                     )
                   ],
                 ),
@@ -241,7 +241,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                   borderRadius:
                                       BorderRadius.circular(width * 0.04)),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   const Icon(
                                     Icons.my_location_rounded,
@@ -273,7 +274,6 @@ class _LocationScreenState extends State<LocationScreen> {
                       },
                     ),
                     const Text("Home"),
-
                     Radio<String>(
                       value: "Office",
                       groupValue: selectedOption,
@@ -284,7 +284,6 @@ class _LocationScreenState extends State<LocationScreen> {
                       },
                     ),
                     const Text("Office"),
-
                     Radio<String>(
                       value: "Other",
                       groupValue: selectedOption,
@@ -316,14 +315,12 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                 ),
-                Align(
-                    alignment: Alignment.center,
-                    child:Text(currentAddress)
+                Align(alignment: Alignment.center, child: Text(currentAddress)
                     // _locationData != null
-                //         ? Text("Latitude: ${_locationData!.latitude}\n"
-                //         "Longitude: ${_locationData!.longitude}")
-                //         : Text("Press the button to get location"),
-                )
+                    //         ? Text("Latitude: ${_locationData!.latitude}\n"
+                    //         "Longitude: ${_locationData!.longitude}")
+                    //         : Text("Press the button to get location"),
+                    )
               ],
             ),
           ),
