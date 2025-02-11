@@ -52,6 +52,8 @@ dependencies:
   location: ^5.0.3
   geocoding: ^3.0.0
   geolocator: ^13.0.2
+  lottie: ^3.2.0
+  audioplayers: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +81,8 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
+    - assets/lottie/
+    - assets/sounds/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

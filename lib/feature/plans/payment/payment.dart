@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/constants/imageconstant.dart';
+import 'package:messmate_user/feature/plans/payment/payment_confirm.dart';
 
 import '../../../core/localvariables.dart';
 
@@ -14,6 +15,24 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+
+  void navigateToPaymentSuccess(BuildContext context) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        transitionDuration: Duration(milliseconds: 500), // Animation duration
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return PaymentConfirm();
+        },
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+      ),
+    );
+  }
+
   String? selectedOption;
   @override
   Widget build(BuildContext context) {
@@ -207,7 +226,12 @@ class _PaymentPageState extends State<PaymentPage> {
                         })
                   ],
                 ),
-              )
+              ),
+              TextButton(
+                  onPressed: () {
+                    navigateToPaymentSuccess(context);
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentConfirm(),));
+                  }, child: Text('confirm payment'))
             ],
           ),
         ),
