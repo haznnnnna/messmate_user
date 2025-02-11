@@ -17,4 +17,6 @@ class ColorConstant{
   static const checkOutItem=Color(0xffD8D2DE);
   static const blue=Color(0xff6A4493);
   static const paymentPageInr=Color(0xff023168);
+  static const dividerColor=Color(0xffDADADA);
+  static const discountColor=Color(0xff159800);
 }

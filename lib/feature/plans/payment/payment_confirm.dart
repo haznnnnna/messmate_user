@@ -15,7 +15,7 @@ class PaymentConfirm extends StatefulWidget {
 }
 
 class _PaymentConfirmState extends State<PaymentConfirm> {
-  final AudioPlayer _audioPlayer = AudioPlayer();
+  final AudioPlayer audioPlayer = AudioPlayer();
 
 @override
   void initState() {
@@ -27,14 +27,14 @@ class _PaymentConfirmState extends State<PaymentConfirm> {
   void _playSuccessSound() async {
     try {
       print("🔊 Trying to play sound...");
-      await _audioPlayer.play(AssetSource('sounds/new-notification-138807.mp3'));
+      await audioPlayer.play(AssetSource('sounds/new-notification-138807.mp3'));
     } catch (e) {
       print("Error playing sound: $e");
     }
   }// Play success sound
 
   void dispose() {
-    _audioPlayer.dispose(); // Clean up the audio player
+    audioPlayer.dispose(); // Clean up the audio player
     super.dispose();
   }
 

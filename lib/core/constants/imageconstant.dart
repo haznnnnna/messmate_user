@@ -19,6 +19,7 @@ class ImageConstant {
   static const ingredientsSalt="assets/images/Salt.png";
   static const ingredientsPeppers="assets/images/papersIcon.png";
   static const profileImg="assets/images/profile_img.png";
+  static const upiIcon="assets/images/upi image.png";
 }
 
 
@@ -51,4 +52,7 @@ class SvgConstants {
   static const categ2="assets/svg/categ2.svg";
   static const categ3="assets/svg/hotdogs.svg";
   static const leftArrow2="assets/svg/chevron-left.svg";
+  static const cardIcon="assets/svg/credit-card-svgrepo-com.svg";
+  static const netBanking="assets/svg/Group 198.svg";
+  static const cashPic="assets/svg/cash-svgrepo-com.svg";
 }
