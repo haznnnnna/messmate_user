@@ -46,9 +46,9 @@ class _PaymentPageState extends State<PaymentPage> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        physics:BouncingScrollPhysics() ,
+        physics: BouncingScrollPhysics(),
         child: SizedBox(
-          height: height ,
+          height: height,
           width: width * 1,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -100,13 +100,13 @@ class _PaymentPageState extends State<PaymentPage> {
                             children: [
                               Text(
                                 "Starting Date : Jan 15th ",
-                                style:
-                                    GoogleFonts.openSans(fontSize: width * 0.036),
+                                style: GoogleFonts.openSans(
+                                    fontSize: width * 0.036),
                               ),
                               Text(
                                 "Ending Date : Feb 15th",
-                                style:
-                                    GoogleFonts.openSans(fontSize: width * 0.036),
+                                style: GoogleFonts.openSans(
+                                    fontSize: width * 0.036),
                               )
                             ],
                           ),
