@@ -15,7 +15,6 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
-
   void navigateToPaymentSuccess(BuildContext context) {
     Navigator.of(context).push(
       PageRouteBuilder(
@@ -51,7 +50,7 @@ class _PaymentPageState extends State<PaymentPage> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 height: height * 0.13,
@@ -128,24 +127,29 @@ class _PaymentPageState extends State<PaymentPage> {
                     ]),
                 child: Row(
                   children: [
-                   Container(
+                    Container(
                       color: Colors.red,
-                     height: height*0.06,
-                     width: width*0.9,
-                     child: Row(
-                       children: [
-                         Radio<String>(
-                             value: 'Option 1',
-                             groupValue: selectedOption,
-                             onChanged: (value) {
-                               setState(() {
-                                 selectedOption = value;
-                               });
-                             }),
-                         Text("Credit/Debit ATM Card",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width*0.044),),
-                       ],
-                     ),
-                   ),
+                      height: height * 0.06,
+                      width: width * 0.9,
+                      child: Row(
+                        children: [
+                          Radio<String>(
+                              value: 'Option 1',
+                              groupValue: selectedOption,
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedOption = value;
+                                });
+                              }),
+                          Text(
+                            "Credit/Debit ATM Card",
+                            style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w700,
+                                fontSize: width * 0.044),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -231,7 +235,8 @@ class _PaymentPageState extends State<PaymentPage> {
                   onPressed: () {
                     navigateToPaymentSuccess(context);
                     // Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentConfirm(),));
-                  }, child: Text('confirm payment'))
+                  },
+                  child: Text('confirm payment'))
             ],
           ),
         ),
