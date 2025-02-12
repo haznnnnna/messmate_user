@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:messmate_user/feature/homescreen/bottonnav.dart';
+import 'package:messmate_user/feature/homescreen/home_screen.dart';
+import 'package:messmate_user/feature/question/question1.dart';
 
 import '../../core/constants/colorconstant.dart';
 import '../../core/constants/imageconstant.dart';
@@ -21,6 +24,7 @@ class _Question2State extends State<Question2> {
     return Scaffold(
       backgroundColor: ColorConstant.whiteColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
           backgroundColor: ColorConstant.whiteColor,
           actions: [
             Padding(
@@ -127,23 +131,28 @@ class _Question2State extends State<Question2> {
                   // Icon(Icons.arrow_back_ios_sharp,color: ColorConstant.primaryColor,),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Question1()));
                     },
                     child: Text('Back',style: GoogleFonts.montserrat(fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: ColorConstant.primaryColor),),
                   ),
-                  Container(
-                    height: height*0.052,
-                    width: width*0.3,
-                    decoration: BoxDecoration(
-                        color: ColorConstant.primaryColor,
-                        borderRadius: BorderRadius.circular(width*0.06)
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNaviPage()));
+                    },
+                    child: Container(
+                      height: height*0.052,
+                      width: width*0.3,
+                      decoration: BoxDecoration(
+                          color: ColorConstant.primaryColor,
+                          borderRadius: BorderRadius.circular(width*0.06)
+                      ),
+                      child: Center(child: Text('Next',style: GoogleFonts.montserrat(
+                          color: ColorConstant.whiteColor,
+                          fontWeight: FontWeight.w700
+                      ),)),
                     ),
-                    child: Center(child: Text('Next',style: GoogleFonts.montserrat(
-                        color: ColorConstant.whiteColor,
-                        fontWeight: FontWeight.w700
-                    ),)),
                   )
                 ],
               )

@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/constants/firebaseConstants.dart';
 import 'package:messmate_user/core/localvariables.dart';
+import 'package:messmate_user/feature/plans/payment/payment.dart';
 import 'package:messmate_user/model/address_model.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -62,6 +63,7 @@ class _LocationScreenState extends State<LocationScreen> {
             ),
             backgroundColor: Colors.green,
           ));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentPage()));
           houseNameController.clear();
           roadNameController.clear();
           cityController.clear();
@@ -116,6 +118,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: ColorConstant.primaryColor,
         title: SizedBox(
@@ -456,6 +459,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         child: GestureDetector(
                           onTap: () {
                             addAddress();
+
                           },
                           child: Container(
                             height: height * 0.07,

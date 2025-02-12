@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
+import 'package:messmate_user/feature/homescreen/chatwithbot.dart';
 import 'package:messmate_user/feature/homescreen/explore.dart';
 import 'package:messmate_user/feature/homescreen/home_screen.dart';
 import 'package:messmate_user/feature/profile/profilepage.dart';
@@ -18,7 +19,7 @@ class _BottomNaviPageState extends State<BottomNaviPage> {
   List pages = [
     const HomeScreen(),
     const ExplorePage(),
-    Container(),
+    const ChatScreen(),
     const ProfilePage()
   ];
   @override

@@ -22,6 +22,7 @@ class _Question1State extends State<Question1> {
     return Scaffold(
       backgroundColor: ColorConstant.whiteColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: ColorConstant.whiteColor,
         actions: [
           Padding(
@@ -126,9 +127,12 @@ class _Question1State extends State<Question1> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Icon(Icons.arrow_back_ios_sharp,color: ColorConstant.primaryColor,),
-                  Text('Back',style: GoogleFonts.montserrat(fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: ColorConstant.primaryColor),),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Text('Back',style: GoogleFonts.montserrat(fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: ColorConstant.primaryColor),),
+                  ),
                   GestureDetector(
                     onTap: () {
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Question2(),));

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:messmate_user/feature/question/question1.dart';
 
 import '../../core/constants/colorconstant.dart';
 import '../../core/localvariables.dart';
@@ -190,18 +191,21 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                   ],
                 ),
-                Container(
-                  height: height * 0.06,
-                  width: width * 0.7,
-                  decoration: BoxDecoration(
-                      color: ColorConstant.primaryColor,
-                      borderRadius: BorderRadius.circular(width * 0.09)),
-                  child: Center(
-                      child: Text("Next",
-                          style: GoogleFonts.montserrat(
-                              color: ColorConstant.whiteColor,
-                              fontSize: width * 0.04,
-                              fontWeight: FontWeight.bold))),
+                GestureDetector(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>Question1())),
+                  child: Container(
+                    height: height * 0.06,
+                    width: width * 0.7,
+                    decoration: BoxDecoration(
+                        color: ColorConstant.primaryColor,
+                        borderRadius: BorderRadius.circular(width * 0.09)),
+                    child: Center(
+                        child: Text("Next",
+                            style: GoogleFonts.montserrat(
+                                color: ColorConstant.whiteColor,
+                                fontSize: width * 0.04,
+                                fontWeight: FontWeight.bold))),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -223,7 +227,8 @@ class _SignupPageState extends State<SignupPage> {
                             decorationColor: ColorConstant.primaryColor,
                             color: ColorConstant.primaryColor,
                             fontWeight: FontWeight.bold,
-                            fontSize: width * 0.04),
+                            fontSize: width * 0.04
+                        ),
                       ),
                     )
                   ],

@@ -12,6 +12,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   navigation() {
     Future.delayed(const Duration(seconds: 3)).then(
       (value) {

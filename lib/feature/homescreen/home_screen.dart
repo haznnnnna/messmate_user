@@ -5,9 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/constants/imageconstant.dart';
+import 'package:messmate_user/feature/profile/profilepage.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../core/localvariables.dart';
+import '../notification/notification_page.dart';
 import '../plans/screens/checkout.dart';
 import '../plans/screens/choose_plans.dart';
 
@@ -126,6 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: ColorConstant.whiteColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: ColorConstant.whiteColor,
         title: Padding(
           padding: EdgeInsets.all(width*0.03),
@@ -136,15 +139,22 @@ class _HomeScreenState extends State<HomeScreen> {
           ),),
         ),
         actions: [
-          SvgPicture.asset(SvgConstants.notification,),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationPage()));
+            },
+              child: SvgPicture.asset(SvgConstants.notification,)),
           SizedBox(width: width*0.03,),
           Padding(
             padding: EdgeInsets.only(
                 right: width*0.06
             ),
-            child: CircleAvatar(
-              radius: 15,
-              backgroundImage: AssetImage(ImageConstant.profileImg),
+            child: GestureDetector(
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage())),
+              child: CircleAvatar(
+                radius: 15,
+                backgroundImage: AssetImage(ImageConstant.profileImg),
+              ),
             ),
           ),
         ],

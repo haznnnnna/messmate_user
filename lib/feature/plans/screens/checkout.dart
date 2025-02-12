@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/constants/imageconstant.dart';
 import 'package:messmate_user/core/localvariables.dart';
+import 'package:messmate_user/feature/homescreen/cart.dart';
 
 class CheckoutPage extends StatefulWidget {
   final String image;
@@ -327,19 +328,22 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ],
                 ),
               ),
-              Container(
-                height: height * 0.04,
-                width: width * 0.4,
-                decoration: BoxDecoration(
-                    color: ColorConstant.primaryColor,
-                    borderRadius: BorderRadius.circular(width * 0.023)),
-                child: Center(
-                  child: Text(
-                    "Add to cart",
-                    style: GoogleFonts.sen(
-                        color: ColorConstant.whiteColor,
-                        fontSize: width * 0.05,
-                        fontWeight: FontWeight.bold),
+              GestureDetector(
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>Cart())),
+                child: Container(
+                  height: height * 0.04,
+                  width: width * 0.4,
+                  decoration: BoxDecoration(
+                      color: ColorConstant.primaryColor,
+                      borderRadius: BorderRadius.circular(width * 0.023)),
+                  child: Center(
+                    child: Text(
+                      "Add to cart",
+                      style: GoogleFonts.sen(
+                          color: ColorConstant.whiteColor,
+                          fontSize: width * 0.05,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               )

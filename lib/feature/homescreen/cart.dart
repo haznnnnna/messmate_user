@@ -5,6 +5,7 @@ import 'package:flutter_dash/flutter_dash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/constants/imageconstant.dart';
+import 'package:messmate_user/feature/homescreen/location.dart';
 
 import '../../core/localvariables.dart';
 
@@ -234,24 +235,29 @@ class _CartState extends State<Cart> {
                                   fontSize: 15, fontWeight: FontWeight.bold)),
                         ],
                       ),
-                      Container(
-                        height: height * 0.07,
-                        width: width * 0.7,
-                        decoration: BoxDecoration(
-                            color: ColorConstant.primaryColor,
-                            borderRadius: BorderRadius.circular(width * 0.07)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Checkout',
-                                style: GoogleFonts.almarai(
-                                    fontSize: 16,
-                                    color: ColorConstant.whiteColor,
-                                    fontWeight: FontWeight.w700)),
-                            SizedBox(width: width * 0.02),
-                            Icon(CupertinoIcons.arrow_right,
-                                color: ColorConstant.whiteColor, size: height * 0.03)
-                          ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationScreen()));
+                        },
+                        child: Container(
+                          height: height * 0.07,
+                          width: width * 0.7,
+                          decoration: BoxDecoration(
+                              color: ColorConstant.primaryColor,
+                              borderRadius: BorderRadius.circular(width * 0.07)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Checkout',
+                                  style: GoogleFonts.almarai(
+                                      fontSize: 16,
+                                      color: ColorConstant.whiteColor,
+                                      fontWeight: FontWeight.w700)),
+                              SizedBox(width: width * 0.02),
+                              Icon(CupertinoIcons.arrow_right,
+                                  color: ColorConstant.whiteColor, size: height * 0.03)
+                            ],
+                          ),
                         ),
                       )
                   //     Row(

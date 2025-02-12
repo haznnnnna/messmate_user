@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:messmate_user/feature/auth/signup_page.dart';
+import 'package:messmate_user/feature/question/question1.dart';
 
 import 'package:pinput/pinput.dart';
 
@@ -88,34 +90,46 @@ class _OtpScreenState extends State<OtpScreen> {
                   SizedBox(
                     height: height * 0.02,
                   ),
-                  const Text("Re enter number"),
+                   GestureDetector(
+                     onTap:() => Navigator.pop(context),
+                       child: Text("Re enter number")),
                 ],
               ),
             ),
-            Container(
-              height: height * 0.06,
-              width: width * 0.7,
-              decoration: BoxDecoration(
-                  color: ColorConstant.primaryColor,
-                  borderRadius: BorderRadius.circular(width * 0.09)),
-              child: Center(
-                  child: Text("Login",
-                      style: GoogleFonts.montserrat(
-                          color: ColorConstant.whiteColor,
-                          fontSize: width * 0.04,
-                          fontWeight: FontWeight.bold))),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
+              },
+              child: Container(
+                height: height * 0.06,
+                width: width * 0.7,
+                decoration: BoxDecoration(
+                    color: ColorConstant.primaryColor,
+                    borderRadius: BorderRadius.circular(width * 0.09)),
+                child: Center(
+                    child: Text("Login",
+                        style: GoogleFonts.montserrat(
+                            color: ColorConstant.whiteColor,
+                            fontSize: width * 0.04,
+                            fontWeight: FontWeight.bold))),
+              ),
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Don’t have an account?"),
-                Text(
-                  " Sign up",
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      decorationColor: ColorConstant.primaryColor,
-                      color: ColorConstant.primaryColor,
-                      fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
+                  },
+                  child: Text(
+                    " Sign up",
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        decorationColor: ColorConstant.primaryColor,
+                        color: ColorConstant.primaryColor,
+                        fontWeight: FontWeight.bold),
+                  ),
                 )
               ],
             )
