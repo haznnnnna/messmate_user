@@ -4,6 +4,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 
 import '../../core/constants/colorconstant.dart';
 import '../../core/localvariables.dart';
+import 'login_page.dart';
 
 
 class SignupPage extends StatefulWidget {
@@ -51,8 +52,9 @@ class _SignupPageState extends State<SignupPage> {
                              fontWeight: FontWeight.w600),
                        ),
                        Text(
-                         "Enter your Login details to get you",
+                         "Enter your Login details to Know you Easily",
                          style: GoogleFonts.montserrat(
+                           fontWeight: FontWeight.w600,
                              color: ColorConstant.blackColor),
                        ),
                      ],
@@ -131,121 +133,62 @@ class _SignupPageState extends State<SignupPage> {
                      ],
                    ),
                  ),
-
-                SizedBox(
-                  height: height*0.21,
-                  width: width*1,
-                  child: Column(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                  // SizedBox(height: height*0.05,),
+                Column(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Row(children: [
+                          Checkbox(
+                            side: BorderSide(
+                              width: width * 0.004,
+                              color: ColorConstant.primaryColor,
+                            ),
+                            activeColor: ColorConstant.primaryColor,
+                            focusColor: ColorConstant.primaryColor,
+                            value: touch,
+                            onChanged: (value) {
+                              setState(() {
+                                touch = value!;
+                              });
+                            },
+                          ),
                           Text(
-                            "Gender",
-                            style: TextStyle(
-                                fontSize: width*0.04),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Row(
-                                children: [
-                                  Radio<String>(
-                                    activeColor: ColorConstant.primaryColor,
-                                    value: 'Female',
-                                    groupValue: _selectedGender,
-                                    onChanged: (String? value) {
-                                      setState(() {
-                                        _selectedGender = value;
-                                      });
-                                    },
-                                  ),
-                                  Text("Female"),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Radio<String>(
-                                    activeColor: ColorConstant.primaryColor,
-                                    value: 'Male',
-                                    groupValue: _selectedGender,
-                                    onChanged: (String? value) {
-                                      setState(() {
-                                        _selectedGender = value;
-                                      });
-                                    },
-                                  ),
-                                  Text("Male"),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Radio<String>(
-                                    activeColor: ColorConstant.primaryColor,
-                                    value: 'Others',
-                                    groupValue: _selectedGender,
-                                    onChanged: (String? value) {
-                                      setState(() {
-                                        _selectedGender = value;
-                                      });
-                                    },
-                                  ),
-                                  Text("Others"),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Row(children: [
-                            Checkbox(
-                              side: BorderSide(
+                            "Remeber me",
+                            style: GoogleFonts.montserrat(
+                                color: ColorConstant.primaryColor),
+                          )
+                        ]),
+                        Row(children: [
+                          Checkbox(
+                            side: BorderSide(
                                 width: width * 0.004,
-                                color: ColorConstant.primaryColor,
-                              ),
-                              activeColor: ColorConstant.primaryColor,
-                              focusColor: ColorConstant.primaryColor,
-                              value: touch,
-                              onChanged: (value) {
-                                setState(() {
-                                  touch = value!;
-                                });
-                              },
+                                color: ColorConstant.primaryColor),
+                            activeColor: ColorConstant.primaryColor,
+                            value: touch1,
+                            onChanged: (value) {
+                              setState(() {
+                                touch1 = value!;
+                              });
+                            },
+                          ),
+                          Text(
+                            "Agree the terms & conditions",
+                            style: GoogleFonts.montserrat(
+                              color: ColorConstant.primaryColor,
+                              decoration: TextDecoration.underline,
+                              decorationColor: ColorConstant.primaryColor,
                             ),
-                            Text(
-                              "Remeber me",
-                              style: GoogleFonts.montserrat(
-                                  color: ColorConstant.primaryColor),
-                            )
-                          ]),
-                          Row(children: [
-                            Checkbox(
-                              side: BorderSide(
-                                  width: width * 0.004,
-                                  color: ColorConstant.primaryColor),
-                              activeColor: ColorConstant.primaryColor,
-                              value: touch1,
-                              onChanged: (value) {
-                                setState(() {
-                                  touch1 = value!;
-                                });
-                              },
-                            ),
-                            Text(
-                              "Agree the terms & conditions",
-                              style: GoogleFonts.montserrat(
-                                color: ColorConstant.primaryColor,
-                                decoration: TextDecoration.underline,
-                                decorationColor: ColorConstant.primaryColor,
-                              ),
-                            )
-                          ]),
-                        ],
-                      ),
-                    ],
-                  ),
+                          )
+                        ]),
+                      ],
+                    ),
+                  ],
                 ),
                 Container(
                   height: height * 0.06,
@@ -260,19 +203,20 @@ class _SignupPageState extends State<SignupPage> {
                               fontSize: width * 0.04,
                               fontWeight: FontWeight.bold))),
                 ),
-                SizedBox(
-                  height: height * 0.04,
-                  width: width * 0.64,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Already have an account?",
-                        style: GoogleFonts.montserrat(
-                          decorationColor: ColorConstant.primaryColor,
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Already have an account?",
+                      style: GoogleFonts.montserrat(
+                        decorationColor: ColorConstant.primaryColor,
                       ),
-                      Text(
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+                      },
+                      child: Text(
                         "Login",
                         style: GoogleFonts.montserrat(
                             decoration: TextDecoration.underline,
@@ -280,9 +224,9 @@ class _SignupPageState extends State<SignupPage> {
                             color: ColorConstant.primaryColor,
                             fontWeight: FontWeight.bold,
                             fontSize: width * 0.04),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 )
                 ]),
           ),
