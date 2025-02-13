@@ -7,12 +7,12 @@ class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
 
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController sendMsgController = TextEditingController();
-  final ChatbotService _chatbotService = ChatbotService();
+  final ChatBotService chatBotService = ChatBotService();
   List<Map<String, String>> messages = [];
 
   void sendMessage() async {
@@ -22,7 +22,7 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     sendMsgController.clear();
-    String botResponse = await _chatbotService.getChatResponse(userMessage);
+    String botResponse = await chatBotService.getChatResponse(userMessage);
 
     setState(() {
       messages.add({"sender": "bot", "message": botResponse});
@@ -78,7 +78,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
-class ChatbotService {
+class ChatBotService {
   final String apiKey = 'your_openai_api_key';
   final String apiUrl = 'https://api.openai.com/v1/chat/completions';
 
