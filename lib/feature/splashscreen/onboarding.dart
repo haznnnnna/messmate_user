@@ -6,6 +6,7 @@ import '../../core/constants/colorconstant.dart';
 import '../../core/constants/imageconstant.dart';
 import '../../core/localvariables.dart';
 import '../auth/login_page.dart';
+import 'loginsignup.dart';
 
 
 class OnBoardingPage extends StatefulWidget {
@@ -89,10 +90,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         ),
       ],
       onDone: () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => LoginPage()),
+        MaterialPageRoute(builder: (_) => Splashscreen5()),
       ),
       onSkip: () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => LoginPage()),
+        MaterialPageRoute(builder: (_) => Splashscreen5()),
       ),
       showSkipButton: true,
       skipOrBackFlex: 0,

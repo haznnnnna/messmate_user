@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:messmate_user/feature/auth/login_page.dart';
+import 'package:messmate_user/feature/homescreen/home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../../core/constants/imageconstant.dart';
 import 'onboarding.dart';
-
+String? name;
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -25,11 +28,23 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+navi(){
+    Future.delayed(Duration(
+      seconds:4
+    )).then((value) async {
+      final SharedPreferences prefs=await SharedPreferences.getInstance();
+      name= prefs.getString('name')??'';
+      name!.isNotEmpty? Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen(),), (route) => false,):
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OnBoardingPage(),));
+    },);
+}
+
   @override
   void initState() {
     // TODO: implement initState
-    navigation();
+    // navigation();
     super.initState();
+    navi();
   }
 
   @override

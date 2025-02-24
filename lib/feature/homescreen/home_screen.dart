@@ -261,7 +261,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             // }
 
                           },
-                          child:TextButton(
+                          child:
+                          TextButton(
                             onPressed: () {
                               setState(() {
                                 selectCategory = categories[index]['title']; // Update the selected category
