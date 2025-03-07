@@ -24,7 +24,7 @@ class _ChatScreenState extends State<ChatScreen> {
     sendMsgController.clear();
     String botResponse = await chatBotService.getChatResponse(userMessage);
 
-    setState(() {
+    setState((){
       messages.add({"sender": "bot", "message": botResponse});
     });
   }
@@ -34,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text("Chatbot"),
+        title: const Text("Chat bot"),
         centerTitle: true,
         backgroundColor: ColorConstant.whiteColor,
       ),
@@ -66,7 +66,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.send),
+                  icon: const Icon(Icons.send),
                   onPressed: sendMessage,
                 ),
               ],
