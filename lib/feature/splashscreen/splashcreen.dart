@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:messmate_user/feature/auth/login_page.dart';
-import 'package:messmate_user/feature/homescreen/home_screen.dart';
+import 'package:messmate_user/feature/auth/screens/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../../core/constants/imageconstant.dart';
+import '../homescreen/screens/home_screen.dart';
 import 'onboarding.dart';
 String? name;
 class SplashScreen extends StatefulWidget {

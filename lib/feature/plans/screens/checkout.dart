@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/constants/imageconstant.dart';
 import 'package:messmate_user/core/localvariables.dart';
-import 'package:messmate_user/feature/homescreen/cart.dart';
+import 'package:messmate_user/feature/cart/screen/cart.dart';
 
 class CheckoutPage extends StatefulWidget {
   final String image;

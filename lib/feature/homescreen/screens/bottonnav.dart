@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
-import 'package:messmate_user/feature/homescreen/chatwithbot.dart';
-import 'package:messmate_user/feature/homescreen/explore.dart';
-import 'package:messmate_user/feature/homescreen/home_screen.dart';
+import 'package:messmate_user/feature/chat/screen/chatwithbot.dart';
+import 'package:messmate_user/feature/homescreen/screens/explore.dart';
 import 'package:messmate_user/feature/profile/profilepage.dart';
-import '../../core/localvariables.dart';
+
+import '../../../core/localvariables.dart';
+import 'home_screen.dart';
 
 class BottomNaviPage extends StatefulWidget {
   const BottomNaviPage({super.key});

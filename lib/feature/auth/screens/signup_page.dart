@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:messmate_user/feature/question/question1.dart';
 
-import '../../core/constants/colorconstant.dart';
-import '../../core/localvariables.dart';
+import '../../../core/constants/colorconstant.dart';
+import '../../../core/localvariables.dart';
 import 'login_page.dart';
 
 

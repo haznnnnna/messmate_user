@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/localvariables.dart';
 
-import '../../core/constants/colorconstant.dart';
+import '../../../core/constants/colorconstant.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});

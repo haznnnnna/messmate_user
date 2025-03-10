@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:messmate_user/feature/homescreen/bottonnav.dart';
-import 'package:messmate_user/feature/homescreen/home_screen.dart';
 import 'package:messmate_user/feature/question/question1.dart';
 
 import '../../core/constants/colorconstant.dart';
 import '../../core/constants/imageconstant.dart';
 import '../../core/localvariables.dart';
+import '../homescreen/screens/bottonnav.dart';
 
 
 class Question2 extends StatefulWidget {
