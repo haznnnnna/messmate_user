@@ -7,7 +7,6 @@ import 'package:messmate_user/feature/auth/otpscreen.dart';
 import 'package:messmate_user/feature/auth/signup_page.dart';
 import 'package:messmate_user/feature/homescreen/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../core/constants/colorconstant.dart';
 import '../../core/localvariables.dart';
 
