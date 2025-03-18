@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/constants/colorconstant.dart';
+import '../../../core/constants/colorconstant.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});

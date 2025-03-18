@@ -33,10 +33,15 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              "Profile",
-              style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.w800, fontSize: width * 0.06),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                "Profile",
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w800, fontSize: width * 0.06),
+              ),
             ),
             Container(
               height: height * 0.3,
@@ -55,6 +60,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Align(
                         alignment: Alignment.topRight,
@@ -119,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ],
                         ),
                         SizedBox(
-                          height: height * 0.07,
+                          height: height * 0.04,
                           child: Container(
                             width: width * 0.002,
                             decoration: BoxDecoration(
@@ -150,7 +156,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ],
                         ),
                         SizedBox(
-                          height: height * 0.07,
+                          height: height * 0.04,
                           child: Container(
                             width: width * 0.002,
                             decoration: BoxDecoration(

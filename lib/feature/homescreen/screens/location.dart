@@ -63,7 +63,8 @@ class _LocationScreenState extends State<LocationScreen> {
             ),
             backgroundColor: Colors.green,
           ));
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentPage()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => PaymentPage()));
           houseNameController.clear();
           roadNameController.clear();
           cityController.clear();
@@ -459,7 +460,6 @@ class _LocationScreenState extends State<LocationScreen> {
                         child: GestureDetector(
                           onTap: () {
                             addAddress();
-
                           },
                           child: Container(
                             height: height * 0.07,

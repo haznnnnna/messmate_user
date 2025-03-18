@@ -5,7 +5,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import '../../core/constants/colorconstant.dart';
 import '../../core/constants/imageconstant.dart';
 import '../../core/localvariables.dart';
-import '../auth/login_page.dart';
+import '../auth/screens/login_page.dart';
 import 'loginsignup.dart';
 
 

@@ -3,12 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:messmate_user/feature/auth/otpscreen.dart';
-import 'package:messmate_user/feature/auth/signup_page.dart';
-import 'package:messmate_user/feature/homescreen/home_screen.dart';
+import 'package:messmate_user/feature/auth/screens/otpscreen.dart';
+import 'package:messmate_user/feature/auth/screens/signup_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../core/constants/colorconstant.dart';
-import '../../core/localvariables.dart';
+
+import '../../../core/constants/colorconstant.dart';
+import '../../../core/localvariables.dart';
+import '../../homescreen/screens/home_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,25 +19,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  loginFunction() async {
-    DocumentSnapshot document = await FirebaseFirestore.instance
-        .collection('userLogin')
-        .doc(userNameController.text.trim())
-        .get();
-    if(document.exists){
-      FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: userNameController.text.trim(),
-          password: passController.text.trim()).then((value) async {
-            final SharedPreferences prefs=await SharedPreferences.getInstance();
-            await prefs.setString('name', userNameController.text.trim());
-          },);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
-    }
-    else{
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          backgroundColor: Colors.red, content: Text("No such user found")));
-    }
-  }
+
+  // loginFunction() async {
+  //   DocumentSnapshot document = await FirebaseFirestore.instance
+  //       .collection('userLogin')
+  //       .doc(userNameController.text.trim())
+  //       .get();
+  //   if(document.exists){
+  //     FirebaseAuth.instance.signInWithEmailAndPassword(
+  //         email: userNameController.text.trim(),
+  //         password: passController.text.trim()).then((value) async {
+  //           final SharedPreferences prefs=await SharedPreferences.getInstance();
+  //           await prefs.setString('name', userNameController.text.trim());
+  //         },);
+  //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+  //   }
+  //   else{
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //         backgroundColor: Colors.red, content: Text("No such user found")));
+  //   }
+  // }
 
   TextEditingController phoneNumController = TextEditingController();
   TextEditingController passController = TextEditingController();

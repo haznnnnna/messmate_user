@@ -5,9 +5,9 @@ import 'package:flutter_dash/flutter_dash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:messmate_user/core/constants/colorconstant.dart';
 import 'package:messmate_user/core/constants/imageconstant.dart';
-import 'package:messmate_user/feature/homescreen/location.dart';
 
-import '../../core/localvariables.dart';
+import '../../../core/localvariables.dart';
+import '../../homescreen/screens/location.dart';
 
 class Cart extends StatefulWidget {
   const Cart({super.key});
